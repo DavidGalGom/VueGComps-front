@@ -1,5 +1,8 @@
 <template>
-  <div class="home"><ProductList /></div>
+  <div class="home">
+    <h1 class="home-title">Our components</h1>
+    <ProductList />
+  </div>
 </template>
 
 <script lang="ts">
@@ -16,4 +19,9 @@ export default defineComponent({
 
 <style lang="scss">
 @import "./src/styles/variables";
+.home-title {
+  text-align: center;
+  margin: 0;
+  padding: 10px 0px;
+}
 </style>
