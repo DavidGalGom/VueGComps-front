@@ -12,7 +12,7 @@ describe("Given a home view", () => {
         stubs: ["router-link", "router-view"],
       });
 
-      expect(wrapper.html()).toContain('<section class="home">');
+      expect(wrapper.html()).toContain('<div class="home">');
     });
   });
 });
