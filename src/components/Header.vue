@@ -39,3 +39,28 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Header",
+  methods: {
+    toggleNavBar() {
+      if (this.toggleInvisible === "none") {
+        this.toggleInvisible = "block";
+        this.toggleBurger = "Selected-burger-menu.png";
+      } else {
+        this.toggleInvisible = "none";
+        this.toggleBurger = "burger-menu-s.png";
+      }
+    },
+  },
+  data() {
+    return {
+      toggleInvisible: "none",
+      toggleBurger: "burger-menu-s.png",
+    };
+  },
+});
+</script>
