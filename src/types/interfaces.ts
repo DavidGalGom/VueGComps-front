@@ -12,5 +12,4 @@ export interface Product {
 
 export interface State {
   products: Array<Product>;
-  productsInCart: Array<Product>;
 }
