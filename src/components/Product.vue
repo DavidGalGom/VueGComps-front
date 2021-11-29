@@ -1,20 +1,23 @@
 <template>
   <div class="card-container">
     <div class="image-container">
-      <img
-        src="https://www.muycomputer.com/wp-content/uploads/2015/02/placabase_2.jpg"
-        alt="component"
-        class="mainImage-component"
-      />
+      <img :src="mainImage" alt="component" class="mainImage-component" />
     </div>
     <div class="info-container">
-      <h3 class="component-name">AsusRog Motherboard</h3>
-      <p class="component-price">199,99 €</p>
+      <h3 class="component-name">{{ name }}</h3>
+      <p class="component-price">{{ price }} €</p>
     </div>
   </div>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Product",
+  props: { name: String, price: Number, mainImage: String },
+});
+</script>
 
 <style scoped lang="scss">
 @import "./src/styles/variables";
@@ -37,7 +40,9 @@
   padding: 20px 15px;
 }
 .mainImage-component {
+  object-fit: cover;
   height: 104px;
+  width: 160px;
   margin: 18px;
   margin-right: 0px;
   border-radius: 10px;
@@ -48,7 +53,7 @@
 .component-name {
   color: $textColor;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
   &:hover {
     cursor: pointer;
@@ -57,6 +62,6 @@
 }
 .component-price {
   color: $mainColor;
-  font-size: 24px;
+  font-size: 20px;
 }
 </style>
