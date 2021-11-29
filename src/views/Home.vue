@@ -1,22 +1,19 @@
 <template>
-  <div class="home">
-    <h1 class="home-title">VueGComps</h1>
-  </div>
+  <div class="home"><ProductList /></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import ProductList from "@/components/ProductList.vue";
 
 export default defineComponent({
   name: "Home",
-  components: {},
+  components: {
+    ProductList,
+  },
 });
 </script>
 
 <style lang="scss">
 @import "./src/styles/variables";
-.home-title {
-  color: $mainColor;
-  text-align: center;
-}
 </style>

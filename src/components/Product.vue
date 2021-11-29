@@ -17,7 +17,7 @@
 <script lang="ts"></script>
 
 <style scoped lang="scss">
-@import "./src/assets/variables";
+@import "./src/styles/variables";
 .card-container {
   background-color: $alterColor;
   margin: 15px;
