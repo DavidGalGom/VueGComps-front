@@ -16,6 +16,7 @@
           class="register-form"
           @submit.prevent="onSubmit"
           autocomplete="off"
+          @change="checkForm"
         >
           <label for="userName"></label>
           <input
@@ -49,27 +50,33 @@
             type="number"
             placeholder="Enter your age"
           />
-          <label for="password" :class="same ? 'no' : ''"></label>
+          <label
+            for="password"
+            :class="notSame ? 'not-same-password' : ''"
+          ></label>
           <input
             id="password"
             v-model="password"
             placeholder="Enter your password"
-            :class="same ? 'no' : ''"
+            :class="notSame ? 'no' : ''"
             type="password"
           />
-          <label for="password" :class="same ? 'no' : ''"></label>
+          <label
+            for="password"
+            :class="notSame ? 'not-same-password' : ''"
+          ></label>
           <input
-            id="password"
-            v-model="password"
+            id="password2"
+            v-model="password2"
             placeholder="Repeat your password"
-            :class="same ? 'no' : ''"
+            :class="notSame ? 'no' : ''"
             type="password"
           />
           <input
             class="register-button"
             type="submit"
             value="Register"
-            disabled="isDisabled"
+            :class="isDisabled ? 'disabled' : ''"
           />
         </form>
       </div>
@@ -79,10 +86,27 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
+import { User } from "../types/interfaces";
 
 export default defineComponent({
   name: "RegisterForm",
+  data() {
+    return {
+      toggleBurger: "account-f92.png",
+      toggleInvisible: "none",
+      name: "",
+      userName: "",
+      email: "",
+      age: +"",
+      password: "",
+      password2: "",
+      notSame: false,
+      isDisabled: false,
+    };
+  },
   methods: {
+    ...mapActions(["addUserAction"]),
     toggleRegister() {
       if (this.toggleBurger === "account-f92.png") {
         this.toggleInvisible = "block";
@@ -92,12 +116,35 @@ export default defineComponent({
         this.toggleBurger = "account-f92.png";
       }
     },
-  },
-  data() {
-    return {
-      toggleBurger: "account-f92.png",
-      toggleInvisible: "none",
-    };
+    checkForm() {
+      if (
+        this.userName !== "" &&
+        this.name !== "" &&
+        this.age !== 0 &&
+        this.email !== "" &&
+        this.password !== "" &&
+        this.password2 !== ""
+      )
+        if (this.password !== this.password2) {
+          this.notSame = true;
+        } else {
+          this.isDisabled = true;
+        }
+    },
+    async onSubmit() {
+      const user: User = {
+        userName: this.userName,
+        email: this.email,
+        password: this.password,
+        age: this.age,
+        name: this.name,
+      };
+      try {
+        await this.addUserAction(user);
+      } catch (error) {
+        this.notSame = true;
+      }
+    },
   },
 });
 </script>

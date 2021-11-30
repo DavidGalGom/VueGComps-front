@@ -1,4 +1,4 @@
-export interface Product {
+interface Product {
   name: string;
   type: string;
   price: number;
@@ -9,8 +9,21 @@ export interface Product {
   isFavorite: boolean;
   id: string;
 }
+interface User {
+  name: string;
+  userName: string;
+  password: string;
+  email: string;
+  age: number;
+  isAdmin?: boolean;
+  components?: Array<Product>;
+  image?: string;
+}
 
-export interface State {
+interface State {
   products: Array<Product>;
   productById: Product;
+  user: User;
 }
+
+export { State, User, Product };
