@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapGetters } from "vuex";
 import ProductDetails from "../components/ProductDetails.vue";
 
 export default defineComponent({
@@ -20,6 +20,8 @@ export default defineComponent({
     ProductDetails,
   },
   computed: {
+    ...mapGetters(["getProductByIdGetter"]),
+
     ...mapState(["productById"]),
   },
   methods: {
