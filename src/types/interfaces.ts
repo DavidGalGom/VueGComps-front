@@ -7,9 +7,10 @@ export interface Product {
   brand: string;
   description: string;
   isFavorite: boolean;
-  id: number;
+  id: string;
 }
 
 export interface State {
   products: Array<Product>;
+  productById: Product;
 }
