@@ -3,15 +3,20 @@
     <div class="left-footer-container">
       <ul class="left-footer-list">
         <li class="about-us">
-          <a href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
+          <a
+            href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
             >About us
           </a>
         </li>
         <li class="help">
-          <a href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109">Help</a>
+          <a
+            href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
+            >Help</a
+          >
         </li>
         <li class="others">
-          <a href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
+          <a
+            href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
             >Others</a
           >
         </li>
@@ -24,13 +29,19 @@
       <div class="social-webs-container">
         <ul class="social-web-list">
           <li class="instagram-list-item">
-            <a href="https://www.instagram.com/"><img src="instagram.png" height="55" /></a>
+            <a href="https://www.instagram.com/"
+              ><img src="instagram.png" height="55" alt="instagram link"
+            /></a>
           </li>
           <li class="twitter-list-item">
-            <a href="https://twitter.com/"><img src="twitter.png" height="40" /></a>
+            <a href="https://twitter.com/"
+              ><img src="twitter.png" height="40" alt="twitter link"
+            /></a>
           </li>
           <li class="youtube-list-item">
-            <a href="https://www.youtube.com/"><img src="youtube.png" height="40" /></a>
+            <a href="https://www.youtube.com/"
+              ><img src="youtube.png" height="40" alt="youtube link"
+            /></a>
           </li>
         </ul>
       </div>
