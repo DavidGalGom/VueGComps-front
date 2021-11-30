@@ -9,8 +9,19 @@ export interface Product {
   isFavorite: boolean;
   id: string;
 }
+export interface User {
+  name: string;
+  userName: string;
+  password: string;
+  email: string;
+  age: number;
+  isAdmin?: boolean;
+  components?: Array<Product>;
+  image?: string;
+}
 
 export interface State {
   products: Array<Product>;
   productById: Product;
+  user: User;
 }
