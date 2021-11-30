@@ -5,7 +5,7 @@ const mutations = {
     state.products = [...payload];
   },
   getProductById(state: State, payload: Product): void {
-    state.productByID = payload;
+    state.productById = payload;
   },
 };
 

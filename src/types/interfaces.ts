@@ -12,5 +12,5 @@ export interface Product {
 
 export interface State {
   products: Array<Product>;
-  productByID: Product;
+  productById: Product;
 }
