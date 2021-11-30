@@ -11,6 +11,16 @@ const state = {
     isFavorite: false,
     id: "",
   },
+  user: {
+    name: "",
+    userName: "",
+    password: "",
+    email: "",
+    age: 0,
+    isAdmin: false,
+    components: [],
+    image: "",
+  },
 };
 
 export default state;
