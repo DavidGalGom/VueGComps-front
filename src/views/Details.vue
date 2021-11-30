@@ -9,8 +9,8 @@
         height="50"
       />
       <div class="container-name-price">
-        <p class="component-name">Component name</p>
-        <p class="component-price">99 €</p>
+        <p class="component-name">{{ name }}</p>
+        <p class="component-price">{{ price }} €</p>
       </div>
       <div class="container-carousel">
         <img
@@ -22,7 +22,7 @@
         />
         <img
           class="component-image"
-          src="https://www.profesionalreview.com/wp-content/uploads/2020/08/AMD-A520-es-lanzado-nuevas-placas-base-de-gama-baja-para-Ryzen_4.jpg"
+          :src="mainImage"
           alt="Component"
           width="250"
         />
@@ -39,18 +39,36 @@
       </div>
       <h2 class="details-subtitle">Product details:</h2>
       <p class="details-paragraph">
-        qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
-        wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-        tttttttttttttttttttttttttttttttttttttttttttt
-        yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+        {{ description }}
       </p>
     </div>
   </div>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+import { defineComponent } from "vue";
+import { mapActions, mapState } from "vuex";
+
+export default defineComponent({
+  name: "Details",
+  props: {
+    name: String,
+    price: Number,
+    mainImage: String,
+    description: String,
+    id: String,
+  },
+  computed: {
+    ...mapState(["productById"]),
+  },
+  methods: {
+    ...mapActions(["getProductByIdAction"]),
+  },
+  mounted() {
+    this.getProductByIdAction(this.id);
+  },
+});
+</script>
 
 <style scoped lang="scss">
 @import "./src/styles/variables";

@@ -9,7 +9,7 @@ const state = {
     brand: "",
     description: "",
     isFavorite: false,
-    id: 0,
+    id: "",
   },
 };
 
