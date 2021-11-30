@@ -1,8 +1,8 @@
 <template>
-  <div class="register">
-    <div class="register-container">
-      <h2 class="register-title">Register:</h2>
-      <form class="register-form" @submit.prevent="onSubmit" autocomplete="off">
+  <div class="login">
+    <div class="login-container">
+      <h2 class="login-title">Login:</h2>
+      <form class="login-form" @submit.prevent="onSubmit" autocomplete="off">
         <label for="userName"></label>
         <input
           class="username-input"
@@ -11,50 +11,19 @@
           type="text"
           placeholder="Enter your user name"
         />
-        <label for="name"></label>
-        <input
-          class="name-input"
-          id="name"
-          v-model="name"
-          type="text"
-          placeholder="Enter your name"
-        />
-        <label for="email"></label>
-        <input
-          class="email-input"
-          id="email"
-          v-model="email"
-          type="email"
-          placeholder="Enter your email"
-        />
-        <label for="age"></label>
-        <input
-          class="age-input"
-          id="age"
-          v-model="age"
-          type="number"
-          placeholder="Enter your age"
-        />
-        <label for="password" :class="same ? 'no' : ''"></label>
+
         <input
           id="password"
           v-model="password"
           placeholder="Enter your password"
-          :class="same ? 'no' : ''"
           type="password"
         />
-        <label for="password" :class="same ? 'no' : ''"></label>
+        <label for="password"></label>
+
         <input
-          id="password"
-          v-model="password"
-          placeholder="Repeat your password"
-          :class="same ? 'no' : ''"
-          type="password"
-        />
-        <input
-          class="register-button"
+          class="login-button"
           type="submit"
-          value="Register"
+          value="Login"
           disabled="isDisabled"
         />
       </form>
@@ -66,25 +35,25 @@
 
 <style scoped lang="scss">
 @import "./src/styles/variables";
-.register {
+.login {
   margin-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 40px;
 }
-.register-container {
+.login-container {
   width: 300px;
-  min-height: 400px;
+  min-height: 250px;
   background-color: $alterColor;
   border-radius: 25px;
 }
-.register-title {
+.login-title {
   margin-top: 20px;
   font-size: 18px;
   margin-left: 35px;
 }
-.register-form {
+.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,7 +76,7 @@ input {
     width: 216px;
   }
 }
-.register-button {
+.login-button {
   background-color: $mainColor;
   color: $backgroundColor;
   font-size: 22px;
