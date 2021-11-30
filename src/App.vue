@@ -21,7 +21,7 @@ export default defineComponent({
 @import "./src/styles/variables";
 body {
   background-color: $backgroundColor;
-  font-family: "Source Sans Pro", sans-serif, Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
