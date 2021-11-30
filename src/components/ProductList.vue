@@ -1,5 +1,5 @@
 <template>
-  <ul class="product-list" v-for="product in products" :key="product._id">
+  <ul class="product-list" v-for="product in products" :key="product.id">
     <Product
       :name="product.name"
       :price="product.price"

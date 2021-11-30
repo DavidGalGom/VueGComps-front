@@ -21,6 +21,7 @@ export default defineComponent({
 @import "./src/styles/variables";
 .home-title {
   text-align: center;
+  font-size: 22px;
   margin: 0;
   padding: 10px 0px;
 }
