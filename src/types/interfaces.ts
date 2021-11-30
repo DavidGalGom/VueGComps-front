@@ -1,4 +1,4 @@
-export interface Product {
+interface Product {
   name: string;
   type: string;
   price: number;
@@ -9,7 +9,7 @@ export interface Product {
   isFavorite: boolean;
   id: string;
 }
-export interface User {
+interface User {
   name: string;
   userName: string;
   password: string;
@@ -20,8 +20,10 @@ export interface User {
   image?: string;
 }
 
-export interface State {
+interface State {
   products: Array<Product>;
   productById: Product;
   user: User;
 }
+
+export { State, User, Product };
