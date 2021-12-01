@@ -15,7 +15,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Product",
-  props: { name: String, price: Number, mainImage: String, id: String },
+  props: ["id", "name", "description", "price", "mainImage"],
 });
 </script>
 

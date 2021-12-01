@@ -1,10 +1,16 @@
 <template>
   <ul class="product-list" v-for="product in products" :key="product.id">
-    <Product
-      :name="product.name"
-      :price="product.price"
-      :mainImage="product.mainImage"
-    />
+    <li class="product-id">
+      <router-link class="details-link" :to="/details/ + product.id">
+        <Product
+          :id="product.id"
+          :name="product.name"
+          :price="product.price"
+          :mainImage="product.mainImage"
+          :description="product.description"
+        />
+      </router-link>
+    </li>
   </ul>
 </template>
 
@@ -37,5 +43,13 @@ export default defineComponent({
   align-items: center;
   margin: 0;
   padding: 0;
+}
+.product-id {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.details-link {
+  text-decoration: none;
 }
 </style>
