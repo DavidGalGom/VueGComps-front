@@ -204,7 +204,6 @@ input {
   padding-left: 15px;
   color: $backgroundColor;
   outline: none;
-  border: 0;
   &:hover {
     border: solid 2px $mainColor;
     height: 31px;
