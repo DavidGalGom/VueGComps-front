@@ -7,6 +7,7 @@
           :name="product.name"
           :price="product.price"
           :mainImage="product.mainImage"
+          :description="product.description"
         />
       </router-link>
     </li>
