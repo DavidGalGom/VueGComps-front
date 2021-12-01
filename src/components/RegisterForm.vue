@@ -42,14 +42,6 @@
             type="email"
             placeholder="Enter your email"
           />
-          <label for="age"></label>
-          <input
-            class="age-input"
-            id="age"
-            v-model="age"
-            type="number"
-            placeholder="Enter your age"
-          />
           <label
             for="password"
             :class="notSame ? 'not-same-password' : ''"
@@ -72,12 +64,23 @@
             :class="notSame ? 'no' : ''"
             type="password"
           />
+          <label for="age"></label>
           <input
+            class="age-input"
+            id="age"
+            v-model="age"
+            type="number"
+            placeholder="Enter your age"
+          />
+          <button
             class="register-button"
             type="submit"
             value="Register"
+            :disabled="isDisabled"
             :class="isDisabled ? 'disabled' : ''"
-          />
+          >
+            Register
+          </button>
         </form>
       </div>
     </div>
@@ -98,11 +101,11 @@ export default defineComponent({
       name: "",
       userName: "",
       email: "",
-      age: +"",
+      age: +"Enter your age",
       password: "",
       password2: "",
       notSame: false,
-      isDisabled: false,
+      isDisabled: true,
     };
   },
   methods: {
@@ -128,7 +131,7 @@ export default defineComponent({
         if (this.password !== this.password2) {
           this.notSame = true;
         } else {
-          this.isDisabled = true;
+          this.isDisabled = false;
         }
     },
     async onSubmit() {
@@ -217,12 +220,15 @@ input {
   }
 }
 .register-button {
+  border-radius: 15px;
+  margin-top: 10px;
   background-color: $mainColor;
   color: $backgroundColor;
   font-size: 22px;
   margin-bottom: 40px;
   height: 50px;
   width: 120px;
+  border: none;
   &:hover {
     background-color: $alterColor;
     color: $mainColor;
@@ -230,6 +236,16 @@ input {
     cursor: pointer;
     height: 50px;
     width: 120px;
+  }
+}
+.disabled {
+  background-color: $backgroundColor;
+  color: $textColor;
+  &:hover {
+    background-color: $backgroundColor;
+    border: solid 2px $backgroundColor;
+    color: $textColor;
+    cursor: default;
   }
 }
 </style>
