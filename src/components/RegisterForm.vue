@@ -141,6 +141,12 @@ export default defineComponent({
       };
       try {
         await this.addUserAction(user);
+        this.userName = "";
+        this.name = "";
+        this.age = 0;
+        this.email = "";
+        this.password = "";
+        this.password2 = "";
       } catch (error) {
         this.notSame = true;
       }
