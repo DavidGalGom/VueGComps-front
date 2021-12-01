@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "test": "vue-cli-service test:unit",
     "test:unit": "vue-cli-service test:unit",
+    "test-cov": "vue-cli-service test:unit --watchAll --collect-coverage",
     "lint": "vue-cli-service lint",
     "prepare": "husky install"
   },
@@ -18,6 +19,10 @@
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/vue": "^6.4.2",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
