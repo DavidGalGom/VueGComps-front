@@ -30,17 +30,26 @@
         <ul class="social-web-list">
           <li class="instagram-list-item">
             <a href="https://www.instagram.com/"
-              ><img src="instagram.png" height="55" alt="instagram link"
+              ><img
+                src="../../public/instagram.png"
+                height="55"
+                alt="instagram link"
             /></a>
           </li>
           <li class="twitter-list-item">
             <a href="https://twitter.com/"
-              ><img src="twitter.png" height="40" alt="twitter link"
+              ><img
+                src="../../public/twitter.png"
+                height="40"
+                alt="twitter link"
             /></a>
           </li>
           <li class="youtube-list-item">
             <a href="https://www.youtube.com/"
-              ><img src="youtube.png" height="40" alt="youtube link"
+              ><img
+                src="../../public/youtube.png"
+                height="40"
+                alt="youtube link"
             /></a>
           </li>
         </ul>
