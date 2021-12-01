@@ -2,7 +2,8 @@
 node_modules
 /dist
 
-
+coverage
+*.lcov
 # local env files
 .env.local
 .env.*.local

@@ -1,6 +1,6 @@
 <template>
-  <div class="login">
-    <h1 class="login-title">Coming soon</h1>
+  <div class="shopping-cart">
+    <h1 class="shopping-cart-title">Coming soon</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 
 <style scoped lang="scss">
 @import "./src/styles/variables";
-.login-title {
+.shopping-cart-title {
   color: $mainColor;
   text-align: center;
 }
