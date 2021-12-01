@@ -2,19 +2,19 @@ import { mount } from "@vue/test-utils";
 import { createStore } from "vuex";
 import router from "../../src/router";
 import state from "../stateMock";
-import Details from "../../src/views/Details.vue";
+import Login from "../../src/views/Login.vue";
 import "@testing-library/jest-dom";
 
-describe("Given a Details component", () => {
+describe("Given a Login component", () => {
   describe("When its rendered", () => {
-    test("Then it should render a image", async () => {
+    test("Then it should render the register and login form", async () => {
       const store = createStore({
         state() {
           return state;
         },
       });
 
-      const wrapper = mount(Details, {
+      const wrapper = mount(Login, {
         global: {
           plugins: [router, store],
         },
@@ -22,7 +22,10 @@ describe("Given a Details component", () => {
       });
 
       expect(wrapper.html()).toContain(
-        '<img class="component-image" src="product main image" alt="Component" width="250">'
+        '<form class="register-form" autocomplete="off">'
+      );
+      expect(wrapper.html()).toContain(
+        '<form class="login-form" autocomplete="off">'
       );
     });
   });
