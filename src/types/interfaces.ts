@@ -20,10 +20,16 @@ interface User {
   image?: string;
 }
 
+interface UserLogin {
+  userName: string;
+  password: string;
+}
+
 interface State {
   products: Array<Product>;
   productById: Product;
   user: User;
+  userLogin: UserLogin;
 }
 
-export { State, User, Product };
+export { State, User, Product, UserLogin };
