@@ -21,6 +21,7 @@ const state = {
     components: [],
     image: "",
   },
+  isAuthenticated: false,
 };
 
 export default state;
