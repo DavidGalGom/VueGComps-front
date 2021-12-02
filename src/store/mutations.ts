@@ -7,6 +7,9 @@ const mutations = {
   getProductById(state: State, payload: Product): void {
     state.productById = payload;
   },
+  loginUser(state: State): void {
+    state.isAuthenticated = true;
+  },
 };
 
 export default mutations;

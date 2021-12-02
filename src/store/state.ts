@@ -21,10 +21,7 @@ const state = {
     components: [],
     image: "",
   },
-  userLogin: {
-    userName: "",
-    password: "",
-  },
+  isAuthenticated: false,
 };
 
 export default state;
