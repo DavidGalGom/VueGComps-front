@@ -20,18 +20,47 @@
         />
         <label for="password"></label>
 
-        <input
+        <button
           class="login-button"
           type="submit"
           value="Login"
-          disabled="isDisabled"
-        />
+          :class="username === '' || password === '' ? 'disabled' : ''"
+        >
+          Login
+        </button>
       </form>
     </div>
   </div>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+import { defineComponent } from "vue";
+import { mapActions } from "vuex";
+import { User } from "../types/interfaces";
+
+export default defineComponent({
+  name: "RegisterForm",
+  data() {
+    return {
+      userName: "",
+      password: "",
+      isDisabled: true,
+    };
+  },
+  methods: {
+    ...mapActions(["loginUserAction"]),
+    async onSubmit() {
+      const user: User = {
+        userName: this.userName,
+        password: this.password,
+      };
+      await this.loginUserAction(user);
+      this.userName = "";
+      this.password = "";
+    },
+  },
+});
+</script>
 
 <style scoped lang="scss">
 @import "./src/styles/variables";
@@ -76,12 +105,15 @@ input {
   }
 }
 .login-button {
+  border-radius: 15px;
+  margin-top: 10px;
   background-color: $mainColor;
   color: $backgroundColor;
   font-size: 22px;
   margin-bottom: 40px;
   height: 50px;
   width: 120px;
+  border: none;
   &:hover {
     background-color: $alterColor;
     color: $mainColor;
@@ -89,6 +121,16 @@ input {
     cursor: pointer;
     height: 50px;
     width: 120px;
+  }
+}
+.disabled {
+  background-color: $backgroundColor;
+  color: $textColor;
+  &:hover {
+    background-color: $backgroundColor;
+    border: solid 2px $backgroundColor;
+    color: $textColor;
+    cursor: default;
   }
 }
 </style>

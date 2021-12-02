@@ -37,7 +37,7 @@ const actions = {
     user: User
   ): Promise<void> {
     const { data: token } = await axios.post(
-      `${process.env.VUE_APP_URL}/users/login`,
+      `${process.env.VUE_APP_API_URL}/users/login`,
       user
     );
     localStorage.setItem("user", JSON.stringify(token.token));
