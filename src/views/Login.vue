@@ -14,7 +14,7 @@ import LoginForm from "@/components/LoginForm.vue";
 import LogoutButton from "@/components/LogoutButton.vue";
 
 export default defineComponent({
-  name: "Home",
+  name: "Login",
   components: {
     RegisterForm,
     LoginForm,
@@ -29,5 +29,8 @@ export default defineComponent({
   color: $textColor;
   text-align: center;
   font-size: 16px;
+}
+.hidden {
+  display: none;
 }
 </style>
