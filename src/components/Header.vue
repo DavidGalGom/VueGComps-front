@@ -26,7 +26,14 @@
     <router-link class="login-link" to="/login"
       ><img
         class="login-logo"
+        :class="$store.state.isAuthenticated ? 'hidden' : ''"
         src="../../public/login-f92.png"
+        alt="Login/Logout"
+        height="50" />
+      <img
+        class="logout-logo"
+        :class="$store.state.isAuthenticated ? '' : 'hidden'"
+        src="../../public/logout-f92.png"
         alt="Login/Logout"
         height="50"
     /></router-link>
@@ -44,7 +51,18 @@
     </div>
     <div class="extended-login">
       <router-link class="about-link" to="/login">
-        <h2 class="extended-login-bar">Login</h2></router-link
+        <h2
+          class="extended-login-bar"
+          :class="$store.state.isAuthenticated ? 'hidden' : ''"
+        >
+          Login
+        </h2>
+        <h2
+          class="extended-login-bar"
+          :class="$store.state.isAuthenticated ? '' : 'hidden'"
+        >
+          Logout
+        </h2></router-link
       >
     </div>
   </div>
@@ -123,7 +141,8 @@ export default defineComponent({
 .burger-menu-logo,
 .vuegcomp-logo,
 .shopping-cart-logo,
-.login-logo {
+.login-logo,
+.logout-logo {
   &:hover {
     cursor: pointer;
     transform: scale(1.1);
@@ -132,5 +151,8 @@ export default defineComponent({
 a {
   text-decoration: none;
   color: $textColor;
+}
+.hidden {
+  display: none;
 }
 </style>

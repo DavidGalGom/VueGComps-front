@@ -1,16 +1,29 @@
-import { render, screen } from "@testing-library/vue";
+import { mount } from "@vue/test-utils";
+import { createStore } from "vuex";
+import router from "../../src/router";
+import state from "../stateMock";
 import Header from "../../src/components/Header.vue";
 import "@testing-library/jest-dom";
 
 describe("Given a header component", () => {
   describe("When its rendered", () => {
     test("Then it should show a image", async () => {
-      render(Header);
-      const headerImage = await screen.getByRole("img", {
-        name: "VueGComps logo",
+      const store = createStore({
+        state() {
+          return state;
+        },
       });
 
-      expect(headerImage).toBeInTheDocument();
+      const wrapper = mount(Header, {
+        global: {
+          plugins: [router, store],
+        },
+        stubs: ["router-view"],
+      });
+
+      expect(wrapper.html()).toContain(
+        '<img class="vuegcomp-logo" alt="VueGComps logo" height="70">'
+      );
     });
   });
 });

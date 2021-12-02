@@ -1,9 +1,20 @@
 <template>
   <div class="login">
-    <h1 class="login-title">Please login, if you are new go to register</h1>
-    <RegisterForm />
-    <LoginForm />
-    <LogoutButton />
+    <h1
+      class="login-title"
+      :class="$store.state.isAuthenticated ? 'hidden' : ''"
+    >
+      Please login, if you are new go to register
+    </h1>
+    <h1
+      class="login-title"
+      :class="$store.state.isAuthenticated ? '' : 'hidden'"
+    >
+      Are you sure to go away?
+    </h1>
+    <RegisterForm :class="$store.state.isAuthenticated ? 'hidden' : ''" />
+    <LoginForm :class="$store.state.isAuthenticated ? 'hidden' : ''" />
+    <LogoutButton :class="$store.state.isAuthenticated ? '' : 'hidden'" />
   </div>
 </template>
 

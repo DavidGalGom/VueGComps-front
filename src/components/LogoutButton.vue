@@ -46,6 +46,7 @@ export default defineComponent({
   flex-direction: column;
   align-content: center;
   align-items: center;
+  min-height: 250px;
 }
 .logout-button {
   border-radius: 15px;
