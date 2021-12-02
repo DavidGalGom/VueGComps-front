@@ -2,13 +2,22 @@
   <div class="details">
     <h1 class="details-title">Details</h1>
     <div class="details-container">
-      <img
-        @click="onSubmit"
-        class="back-button"
-        src="../../public/back-button-f92.png"
-        alt="back button"
-        height="50"
-      />
+      <div class="icons-details-container">
+        <img
+          @click="onSubmit"
+          class="back-button"
+          src="../../public/back-button-f92.png"
+          alt="back button"
+          height="50"
+        />
+        <img
+          class="favorite-button"
+          :class="$store.state.isAuthenticated ? 'hidden' : 'hidden'"
+          src="../../public/favorite-f92.png"
+          alt="favorite button"
+          height="50"
+        />
+      </div>
       <div class="container-name-price">
         <p class="component-name">{{ productById.name }}</p>
         <p class="component-price">{{ productById.price }} €</p>
@@ -36,7 +45,7 @@
         />
       </div>
       <div class="button-container">
-        <button class="add-cart-button">Add to cart</button>
+        <button class="add-cart-button" @click="addToCart">Add to cart</button>
       </div>
       <h2 class="details-subtitle">Product details:</h2>
       <p class="details-paragraph">
@@ -50,6 +59,7 @@
 import { defineComponent } from "vue";
 import { useRoute } from "vue-router";
 import { mapActions, mapState } from "vuex";
+import state from "../store/state";
 
 export default defineComponent({
   name: "Details",
@@ -61,6 +71,11 @@ export default defineComponent({
     ...mapActions(["getProductByIdAction"]),
     onSubmit() {
       this.$router.push("/");
+    },
+    addToCart() {
+      if (state.isAuthenticated === false) {
+        this.$router.push("/login");
+      }
     },
   },
   mounted() {
@@ -87,8 +102,20 @@ export default defineComponent({
   background-color: $alterColor;
   border-radius: 25px;
 }
+.icons-details-container {
+  display: flex;
+  justify-content: space-between;
+}
 .back-button {
   margin-left: 25px;
+  margin-top: 20px;
+  &:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+  }
+}
+.favorite-button {
+  margin-right: 25px;
   margin-top: 20px;
   &:hover {
     cursor: pointer;
@@ -149,5 +176,8 @@ export default defineComponent({
   padding: 0 30px;
   word-break: break-all;
   margin-bottom: 30px;
+}
+.hidden {
+  display: none;
 }
 </style>
