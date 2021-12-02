@@ -11,6 +11,10 @@ const mutations = {
     state.isAuthenticated = true;
     state.user = payload;
   },
+  logoutUser(state: State, payload: User): void {
+    state.isAuthenticated = false;
+    state.user = payload;
+  },
 };
 
 export default mutations;

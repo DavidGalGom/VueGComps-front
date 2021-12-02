@@ -4,7 +4,7 @@
       class="logout-button"
       type="submit"
       value="Logout"
-      @submit.prevent="onSubmit"
+      @click="onSubmit"
     >
       Log Out
     </button>
@@ -13,11 +13,28 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
+import { User } from "../types/interfaces";
 
 export default defineComponent({
   name: "LogoutButton",
   data() {
-    return {};
+    return {
+      userName: "",
+      password: "",
+    };
+  },
+  methods: {
+    ...mapActions(["logoutUserAction"]),
+    async onSubmit() {
+      const user: User = {
+        userName: (this.userName = ""),
+        password: (this.password = ""),
+      };
+      await this.logoutUserAction(user);
+      this.$router.push("/");
+      window.scrollTo(0, 0);
+    },
   },
 });
 </script>

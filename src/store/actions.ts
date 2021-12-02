@@ -46,6 +46,23 @@ const actions = {
 
     commit("loginUser", userInfo);
   },
+
+  async logoutUserAction({
+    commit,
+  }: ActionContext<State, State>): Promise<void> {
+    localStorage.removeItem("userToken");
+    const loggedUser: User = {
+      name: "",
+      userName: "",
+      password: "",
+      email: "",
+      age: +"",
+      isAdmin: false,
+      components: [],
+      image: "",
+    };
+    commit("logoutUser", loggedUser);
+  },
 };
 
 export default actions;
