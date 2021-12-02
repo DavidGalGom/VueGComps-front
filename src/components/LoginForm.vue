@@ -39,7 +39,7 @@ import { mapActions } from "vuex";
 import { User } from "../types/interfaces";
 
 export default defineComponent({
-  name: "RegisterForm",
+  name: "LoginForm",
   data() {
     return {
       userName: "",
