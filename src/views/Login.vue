@@ -3,6 +3,7 @@
     <h1 class="login-title">Please login, if you are new go to register</h1>
     <RegisterForm />
     <LoginForm />
+    <LogoutButton />
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import { defineComponent } from "vue";
 import RegisterForm from "@/components/RegisterForm.vue";
 import LoginForm from "@/components/LoginForm.vue";
+import LogoutButton from "@/components/LogoutButton.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
     RegisterForm,
     LoginForm,
+    LogoutButton,
   },
 });
 </script>
