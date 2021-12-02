@@ -8,12 +8,24 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapState, mapActions } from "vuex";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 
 export default defineComponent({
   name: "app",
   components: { Header, Footer },
+  computed: {
+    ...mapState(["loggedUser"]),
+  },
+  methods: {
+    ...mapActions(["checkTokenAction"]),
+  },
+  mounted() {
+    if (localStorage.getItem("userToken")) {
+      this.checkTokenAction();
+    }
+  },
 });
 </script>
 

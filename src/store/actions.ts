@@ -67,7 +67,7 @@ const actions = {
   checkTokenAction({ commit }: ActionContext<State, State>): string | void {
     try {
       const token = JSON.parse(localStorage.getItem("userToken") || "");
-      return commit("loggedUser", jwtDecode(token.token));
+      return commit("loggedUser", jwtDecode(token));
     } catch {
       return "Error";
     }
