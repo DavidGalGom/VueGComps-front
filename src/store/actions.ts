@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 import { ActionContext } from "vuex";
 import { State, User } from "../types/interfaces";
 
@@ -24,7 +26,6 @@ const actions = {
   },
 
   async addUserAction(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     { commit }: ActionContext<State, State>,
     user: User
   ): Promise<void> {
@@ -32,7 +33,6 @@ const actions = {
   },
 
   async loginUserAction(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     { commit }: ActionContext<State, State>,
     user: User
   ): Promise<void> {
@@ -40,7 +40,11 @@ const actions = {
       `${process.env.VUE_APP_API_URL}/users/login`,
       user
     );
-    localStorage.setItem("user", JSON.stringify(token.token));
+    const userInfo = jwtDecode(token.token);
+
+    localStorage.setItem("userToken", JSON.stringify(token.token));
+
+    commit("loginUser", userInfo);
   },
 };
 
