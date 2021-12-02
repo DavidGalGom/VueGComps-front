@@ -9,16 +9,28 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapState, mapActions } from "vuex";
 import RegisterForm from "@/components/RegisterForm.vue";
 import LoginForm from "@/components/LoginForm.vue";
 import LogoutButton from "@/components/LogoutButton.vue";
 
 export default defineComponent({
-  name: "Home",
+  name: "Login",
   components: {
     RegisterForm,
     LoginForm,
     LogoutButton,
+  },
+  computed: {
+    ...mapState(["loggedUser"]),
+  },
+  methods: {
+    ...mapActions(["checkTokenAction"]),
+  },
+  mounted() {
+    if (localStorage.getItem("userToken")) {
+      this.checkTokenAction();
+    }
   },
 });
 </script>
@@ -29,5 +41,8 @@ export default defineComponent({
   color: $textColor;
   text-align: center;
   font-size: 16px;
+}
+.hidden {
+  display: none;
 }
 </style>
