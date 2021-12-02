@@ -10,26 +10,20 @@ interface Product {
   id: string;
 }
 interface User {
-  name: string;
+  name?: string;
   userName: string;
   password: string;
-  email: string;
-  age: number;
+  email?: string;
+  age?: number;
   isAdmin?: boolean;
   components?: Array<Product>;
   image?: string;
-}
-
-interface UserLogin {
-  userName: string;
-  password: string;
 }
 
 interface State {
   products: Array<Product>;
   productById: Product;
   user: User;
-  userLogin: UserLogin;
 }
 
-export { State, User, Product, UserLogin };
+export { State, User, Product };
