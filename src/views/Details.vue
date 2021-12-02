@@ -3,6 +3,7 @@
     <h1 class="details-title">Details</h1>
     <div class="details-container">
       <img
+        @click="onSubmit"
         class="back-button"
         src="../../public/back-button-f92.png"
         alt="back button"
@@ -58,6 +59,9 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["getProductByIdAction"]),
+    onSubmit() {
+      this.$router.push("/");
+    },
   },
   mounted() {
     const route = useRoute();
