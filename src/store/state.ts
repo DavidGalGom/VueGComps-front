@@ -21,6 +21,10 @@ const state = {
     components: [],
     image: "",
   },
+  userLogin: {
+    userName: "",
+    password: "",
+  },
 };
 
 export default state;
