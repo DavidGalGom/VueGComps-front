@@ -52,6 +52,7 @@ const actions = {
   }: ActionContext<State, State>): Promise<void> {
     localStorage.removeItem("userToken");
     const loggedUser: User = {
+      id: "",
       name: "",
       userName: "",
       password: "",
@@ -71,6 +72,16 @@ const actions = {
     } catch {
       return "Error";
     }
+  },
+  async getUserCompsByIdAction(
+    { commit }: ActionContext<State, State>,
+    id: string
+  ): Promise<void> {
+    const { data } = await axios.get(
+      `${process.env.VUE_APP_API_URL}/users/${id}`
+    );
+    const { userComponents } = data.components;
+    commit("getUserCompsById", userComponents);
   },
 };
 
