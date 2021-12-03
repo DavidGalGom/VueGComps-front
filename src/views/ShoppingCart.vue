@@ -22,6 +22,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
+import state from "../store/state";
 import CartCard from "@/components/CartCard.vue";
 
 export default defineComponent({
@@ -37,6 +38,10 @@ export default defineComponent({
   },
   mounted() {
     this.getUserCompsByIdAction();
+
+    if (state.isAuthenticated === false) {
+      this.$router.push("/login");
+    }
   },
 });
 </script>
