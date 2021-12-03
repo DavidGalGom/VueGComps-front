@@ -28,8 +28,8 @@ export default defineComponent({
     ...mapActions(["logoutUserAction"]),
     async onSubmit() {
       const user: User = {
-        userName: (this.userName = ""),
-        password: (this.password = ""),
+        userName: this.userName,
+        password: this.password,
       };
       await this.logoutUserAction(user);
       this.$router.push("/");

@@ -19,6 +19,9 @@ const mutations = {
     state.isAuthenticated = true;
     state.user = payload;
   },
+  getUserCompsById(state: State, payload: Array<Product>): void {
+    state.productsInCart = [...payload];
+  },
 };
 
 export default mutations;

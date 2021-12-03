@@ -10,6 +10,7 @@ interface Product {
   id: string;
 }
 interface User {
+  id?: string;
   name?: string;
   userName: string;
   password: string;
@@ -25,6 +26,7 @@ interface State {
   productById: Product;
   user: User;
   isAuthenticated: boolean;
+  productsInCart: Array<Product>;
 }
 
 export { State, User, Product };

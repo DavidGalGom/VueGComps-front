@@ -22,6 +22,7 @@ const state = {
     image: "",
   },
   isAuthenticated: false,
+  productsInCart: [],
 };
 
 export default state;
