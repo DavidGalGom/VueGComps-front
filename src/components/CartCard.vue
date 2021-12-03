@@ -7,12 +7,12 @@
       <div class="info-container">
         <img
           class="delete-cart-button"
-          src="../../public/Selected-burger-menu.png"
+          :src="mainImage"
           alt="Delete from cart button"
           height="40"
         />
-        <h3 class="component-name">Name of the component</h3>
-        <p class="component-price">1234,55 €</p>
+        <h3 class="component-name">{{ name }}</h3>
+        <p class="component-price">{{ price }} €</p>
       </div>
     </div>
     <button class="cart-buy-button">Proceed to BUY</button>

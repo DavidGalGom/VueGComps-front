@@ -73,15 +73,20 @@ const actions = {
       return "Error";
     }
   },
-  async getUserCompsByIdAction(
-    { commit }: ActionContext<State, State>,
-    id: string
-  ): Promise<void> {
+  async getUserCompsByIdAction({
+    commit,
+  }: ActionContext<State, State>): Promise<void> {
+    const token = JSON.parse(localStorage.getItem("userToken") || "");
+    const tokenId: User = jwtDecode(token);
     const { data } = await axios.get(
-      `${process.env.VUE_APP_API_URL}/users/${id}`
+      `${process.env.VUE_APP_API_URL}/users/${tokenId.id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
-    const { userComponents } = data.components;
-    commit("getUserCompsById", userComponents);
+    commit("getUserCompsById", data.components);
   },
 };
 
