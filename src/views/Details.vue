@@ -77,7 +77,7 @@ export default defineComponent({
         this.$router.push("/login");
       } else {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { id }: any = state.productById.id;
+        const { id }: any = state.productById;
         this.addProductToCartAction(id);
       }
     },

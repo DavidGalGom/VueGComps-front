@@ -22,6 +22,10 @@ const mutations = {
   getUserCompsById(state: State, payload: Array<Product>): void {
     state.productsInCart = [...payload];
   },
+  addProductToCart(state: State, payload: Array<Product>): void {
+    state.user.components = payload;
+    state.productsInCart = payload;
+  },
 };
 
 export default mutations;

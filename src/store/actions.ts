@@ -88,6 +88,30 @@ const actions = {
     );
     commit("getUserCompsById", data.components);
   },
+  async addProductToCartAction(
+    { commit }: ActionContext<State, State>,
+    id: string
+  ): Promise<void> {
+    const token = JSON.parse(localStorage.getItem("userToken") || "");
+    const user: User = jwtDecode(token);
+    const newProducts = {
+      ...user.components,
+      id,
+    };
+    const authorization = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const { data } = await axios.put(
+      `${process.env.VUE_APP_API_URL}/users/${user.id}`,
+      newProducts,
+      authorization
+    );
+
+    commit("addProductToCart", newProducts);
+  },
 };
 
 export default actions;
