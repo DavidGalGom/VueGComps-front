@@ -1,63 +1,65 @@
 <template>
-  <div class="footer-div">
-    <div class="left-footer-container">
-      <ul class="left-footer-list">
-        <li class="about-us">
-          <a
-            href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
-            >About us
-          </a>
-        </li>
-        <li class="help">
-          <a
-            href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
-            >Help</a
-          >
-        </li>
-        <li class="others">
-          <a
-            href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
-            >Others</a
-          >
-        </li>
-      </ul>
-    </div>
-    <div class="right-footer-container">
-      <div class="contact-us-container">
-        <p class="contact-us">Contact us:</p>
-      </div>
-      <div class="social-webs-container">
-        <ul class="social-web-list">
-          <li class="instagram-list-item">
-            <a href="https://www.instagram.com/"
-              ><img
-                src="../../public/instagram.png"
-                height="55"
-                alt="instagram link"
-            /></a>
+  <div class="footer-container">
+    <div class="footer-div">
+      <div class="left-footer-container">
+        <ul class="left-footer-list">
+          <li class="about-us">
+            <a
+              href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
+              >About us
+            </a>
           </li>
-          <li class="twitter-list-item">
-            <a href="https://twitter.com/"
-              ><img
-                src="../../public/twitter.png"
-                height="40"
-                alt="twitter link"
-            /></a>
+          <li class="help">
+            <a
+              href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
+              >Help</a
+            >
           </li>
-          <li class="youtube-list-item">
-            <a href="https://www.youtube.com/"
-              ><img
-                src="../../public/youtube.png"
-                height="40"
-                alt="youtube link"
-            /></a>
+          <li class="others">
+            <a
+              href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
+              >Others</a
+            >
           </li>
         </ul>
       </div>
+      <div class="right-footer-container">
+        <div class="contact-us-container">
+          <p class="contact-us">Contact us:</p>
+        </div>
+        <div class="social-webs-container">
+          <ul class="social-web-list">
+            <li class="instagram-list-item">
+              <a href="https://www.instagram.com/"
+                ><img
+                  src="../../public/instagram.png"
+                  height="55"
+                  alt="instagram link"
+              /></a>
+            </li>
+            <li class="twitter-list-item">
+              <a href="https://twitter.com/"
+                ><img
+                  src="../../public/twitter.png"
+                  height="40"
+                  alt="twitter link"
+              /></a>
+            </li>
+            <li class="youtube-list-item">
+              <a href="https://www.youtube.com/"
+                ><img
+                  src="../../public/youtube.png"
+                  height="40"
+                  alt="youtube link"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="bottom-footer-container">
-    <h3 class="footer-copyright">2021 All rights reserved - VueGComps</h3>
+    <div class="bottom-footer-container">
+      <h3 class="footer-copyright">2021 All rights reserved - VueGComps</h3>
+    </div>
   </div>
 </template>
 

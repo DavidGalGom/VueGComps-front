@@ -1,6 +1,11 @@
 <template>
   <div class="shopping-cart">
-    <h1 class="shopping-cart-title">This is your list of products</h1>
+    <h1 class="shopping-cart-title" :class="anyComponent ? '' : 'hidden'">
+      This is your product list
+    </h1>
+    <h1 class="shopping-cart-title" :class="anyComponent ? 'hidden' : ''">
+      You have an empty product list
+    </h1>
     <ul
       class="productCart-list"
       v-for="productInCart in productsInCart"
@@ -22,12 +27,18 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
+import state from "../store/state";
 import CartCard from "@/components/CartCard.vue";
 
 export default defineComponent({
   name: "ShoppingCart",
   components: {
     CartCard,
+  },
+  data() {
+    return {
+      anyComponent: false,
+    };
   },
   computed: {
     ...mapState(["productsInCart"]),
@@ -37,6 +48,13 @@ export default defineComponent({
   },
   mounted() {
     this.getUserCompsByIdAction();
+
+    if (state.isAuthenticated === false) {
+      this.$router.push("/login");
+    }
+    if (state.productsInCart.length === 0) {
+      this.anyComponent = true;
+    }
   },
 });
 </script>
@@ -59,5 +77,8 @@ export default defineComponent({
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.hidden {
+  display: none;
 }
 </style>
