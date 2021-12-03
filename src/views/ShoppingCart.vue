@@ -30,7 +30,7 @@ export default defineComponent({
     CartCard,
   },
   computed: {
-    ...mapState(["getUserCompsById"]),
+    ...mapState(["productsInCart"]),
   },
   methods: {
     ...mapActions(["getUserCompsByIdAction"]),
@@ -47,5 +47,17 @@ export default defineComponent({
   color: $textColor;
   text-align: center;
   font-size: 22px;
+}
+.productCart-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.productCart-id {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 </style>

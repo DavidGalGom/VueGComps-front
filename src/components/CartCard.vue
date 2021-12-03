@@ -2,12 +2,12 @@
   <div class="cart-card-container">
     <div class="card-container">
       <div class="image-container">
-        <img src="ram.jpg" alt="component" class="mainImage-component" />
+        <img :src="mainImage" alt="component" class="mainImage-component" />
       </div>
       <div class="info-container">
         <img
           class="delete-cart-button"
-          :src="mainImage"
+          src="../../public/Selected-burger-menu.png"
           alt="Delete from cart button"
           height="40"
         />
