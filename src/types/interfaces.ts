@@ -26,6 +26,7 @@ interface State {
   productById: Product;
   user: User;
   isAuthenticated: boolean;
+  productsInCart: Array<Product>;
 }
 
 export { State, User, Product };
