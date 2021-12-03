@@ -1,6 +1,11 @@
 <template>
   <div class="shopping-cart">
-    <h1 class="shopping-cart-title">This is your list of products</h1>
+    <h1 class="shopping-cart-title" :class="anyComponent ? '' : 'hidden'">
+      This is your product list
+    </h1>
+    <h1 class="shopping-cart-title" :class="anyComponent ? 'hidden' : ''">
+      You have an empty product list
+    </h1>
     <ul
       class="productCart-list"
       v-for="productInCart in productsInCart"
@@ -30,6 +35,11 @@ export default defineComponent({
   components: {
     CartCard,
   },
+  data() {
+    return {
+      anyComponent: false,
+    };
+  },
   computed: {
     ...mapState(["productsInCart"]),
   },
@@ -41,6 +51,9 @@ export default defineComponent({
 
     if (state.isAuthenticated === false) {
       this.$router.push("/login");
+    }
+    if (state.productsInCart.length === 0) {
+      this.anyComponent = true;
     }
   },
 });
@@ -64,5 +77,8 @@ export default defineComponent({
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.hidden {
+  display: none;
 }
 </style>
