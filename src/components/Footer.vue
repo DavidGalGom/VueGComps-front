@@ -69,6 +69,7 @@
 @import "./src/styles/variables";
 .footer-div {
   display: flex;
+  justify-content: space-between;
   height: 110px;
   width: 90vw;
 }
@@ -95,7 +96,6 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60%;
 }
 .contact-us-container {
   margin-top: 10px;
