@@ -184,7 +184,7 @@ export default defineComponent({
 .hidden {
   display: none;
 }
-@media (min-width: 650px) and (max-width: 1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
   .details-container {
     width: 600px;
   }
@@ -219,7 +219,7 @@ export default defineComponent({
     margin-top: 0;
     border-radius: 0 0 30px 30px;
     width: 400px;
-    height: 80px;
+    height: 65px;
     font-size: 30px;
   }
   .details-subtitle {
