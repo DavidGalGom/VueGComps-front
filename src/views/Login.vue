@@ -12,8 +12,10 @@
     >
       Are you sure to go away?
     </h1>
-    <RegisterForm :class="$store.state.isAuthenticated ? 'hidden' : ''" />
-    <LoginForm :class="$store.state.isAuthenticated ? 'hidden' : ''" />
+    <div class="register-login-container">
+      <RegisterForm :class="$store.state.isAuthenticated ? 'hidden' : ''" />
+      <LoginForm :class="$store.state.isAuthenticated ? 'hidden' : ''" />
+    </div>
     <LogoutButton :class="$store.state.isAuthenticated ? '' : 'hidden'" />
   </div>
 </template>
@@ -43,5 +45,11 @@ export default defineComponent({
 }
 .hidden {
   display: none;
+}
+@media (min-width: 700px) and (max-width: 1000px) {
+  .register-login-container {
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>
