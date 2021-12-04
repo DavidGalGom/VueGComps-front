@@ -26,6 +26,10 @@ const mutations = {
     state.user.components = payload;
     state.productsInCart = payload;
   },
+  deleteProductToCart(state: State, payload: Array<Product>): void {
+    state.user.components = payload;
+    state.productsInCart = payload;
+  },
 };
 
 export default mutations;

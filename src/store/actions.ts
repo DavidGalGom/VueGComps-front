@@ -2,7 +2,7 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { ActionContext } from "vuex";
-import { State, User } from "../types/interfaces";
+import { Product, State, User } from "../types/interfaces";
 
 const actions = {
   async getProductsAction({
@@ -90,7 +90,7 @@ const actions = {
   },
   async addProductToCartAction(
     { commit }: ActionContext<State, State>,
-    id: string
+    { id, components }: { id: string; components: Array<Product> }
   ): Promise<void> {
     const token = JSON.parse(localStorage.getItem("userToken") || "");
     const user: User = jwtDecode(token);
@@ -104,13 +104,37 @@ const actions = {
       },
     };
 
-    const { data } = await axios.put(
+    await axios.put(
       `${process.env.VUE_APP_API_URL}/users/${user.id}`,
       newProducts,
       authorization
     );
 
     commit("addProductToCart", newProducts);
+  },
+
+  async deleteProductToCartAction(
+    { commit }: ActionContext<State, State>,
+    { id, components }: { id: string; components: Array<Product> }
+  ): Promise<void> {
+    const token = JSON.parse(localStorage.getItem("userToken") || "");
+    const user: User = jwtDecode(token);
+    const newProducts = {
+      components: user.components?.filter((component) => component.id !== id),
+    };
+    const authorization = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    await axios.put(
+      `${process.env.VUE_APP_API_URL}/users/${user.id}`,
+      newProducts,
+      authorization
+    );
+
+    commit("deleteProductToCart", newProducts);
   },
 };
 
