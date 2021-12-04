@@ -68,13 +68,17 @@ export default defineComponent({
     ...mapState(["productById"]),
   },
   methods: {
-    ...mapActions(["getProductByIdAction"]),
+    ...mapActions(["getProductByIdAction", "addProductToCartAction"]),
     onSubmit() {
       this.$router.push("/");
     },
     addToCart() {
       if (state.isAuthenticated === false) {
         this.$router.push("/login");
+      } else {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const { id }: any = state.productById;
+        this.addProductToCartAction(id);
       }
     },
   },

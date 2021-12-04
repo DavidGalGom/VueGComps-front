@@ -1,9 +1,9 @@
 <template>
   <div class="shopping-cart">
-    <h1 class="shopping-cart-title" :class="anyComponent ? '' : 'hidden'">
+    <h1 class="shopping-cart-title" :class="anyComponent ? 'hidden' : ''">
       This is your product list
     </h1>
-    <h1 class="shopping-cart-title" :class="anyComponent ? 'hidden' : ''">
+    <h1 class="shopping-cart-title" :class="anyComponent ? '' : 'hidden'">
       You have an empty product list
     </h1>
     <ul
@@ -52,7 +52,7 @@ export default defineComponent({
     if (state.isAuthenticated === false) {
       this.$router.push("/login");
     }
-    if (state.productsInCart.length === 0) {
+    if (state.user.components.length === 0) {
       this.anyComponent = true;
     }
   },
