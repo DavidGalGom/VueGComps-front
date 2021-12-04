@@ -184,7 +184,7 @@ export default defineComponent({
 .hidden {
   display: none;
 }
-@media (min-width: 700px) and (max-width: 1000px) {
+@media (min-width: 700px) {
   .details-container {
     width: 600px;
   }

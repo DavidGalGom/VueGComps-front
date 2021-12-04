@@ -54,7 +54,7 @@ export default defineComponent({
 .details-link {
   text-decoration: none;
 }
-@media (min-width: 700px) and (max-width: 1000px) {
+@media (min-width: 700px) {
   .list-container {
     display: flex;
     flex-direction: row;
