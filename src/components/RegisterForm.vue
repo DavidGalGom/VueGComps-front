@@ -245,7 +245,7 @@ input {
   }
 }
 
-@media (min-width: 700px) and (max-width: 1000px) {
+@media (min-width: 700px) {
   .register-container {
     margin-right: 15px;
   }

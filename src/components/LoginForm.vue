@@ -136,7 +136,7 @@ input {
   }
 }
 
-@media (min-width: 700px) and (max-width: 1000px) {
+@media (min-width: 700px) {
   .login-container {
     margin-left: 15px;
   }

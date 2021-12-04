@@ -83,7 +83,7 @@ export default defineComponent({
 .hidden {
   display: none;
 }
-@media (min-width: 700px) and (max-width: 1000px) {
+@media (min-width: 700px) {
   .list-container {
     display: flex;
     flex-wrap: wrap;

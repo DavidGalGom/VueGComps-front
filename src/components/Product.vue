@@ -64,4 +64,15 @@ export default defineComponent({
   color: $mainColor;
   font-size: 20px;
 }
+@media (min-width: 1000px) {
+  .card-container {
+    margin: 20px;
+    height: 190px;
+    width: 400px;
+  }
+  .mainImage-component {
+    height: 154px;
+    width: 237px;
+  }
+}
 </style>

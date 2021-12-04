@@ -68,12 +68,16 @@ export default defineComponent({
     width: 120px;
   }
 }
-@media (min-width: 700px) and (max-width: 1000px) {
+@media (min-width: 700px) {
   .logout-button {
     border-radius: 20px;
     font-size: 26px;
     height: 75px;
     width: 180px;
+    &:hover {
+      height: 75px;
+      width: 180px;
+    }
   }
 }
 </style>
