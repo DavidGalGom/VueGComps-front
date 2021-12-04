@@ -29,13 +29,13 @@ export default defineComponent({
   name: "CartCard",
   props: ["id", "name", "description", "price", "mainImage"],
   computed: {
-    ...mapState(["productsInCart"]),
+    ...mapState(["productsInCart", "productsInCartId"]),
   },
   methods: {
     ...mapActions(["deleteProductToCartAction"]),
     deleteToCart() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { id }: any = state.productById;
+      const { id }: any = state.productsInCart;
       this.deleteProductToCartAction(id);
     },
   },
