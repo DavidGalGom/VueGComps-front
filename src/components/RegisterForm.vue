@@ -5,13 +5,13 @@
         <h2 class="register-title">Register:</h2>
         <img
           class="register-toggler"
-          :src="toggleBurger"
+          :src="openRegister ? 'Selected-burger-menu.png' : 'account-f92.png'"
           alt="open/close from icon"
           height="40"
           @click="toggleRegister"
         />
       </div>
-      <div class="hidden-container" :style="{ display: toggleInvisible }">
+      <div class="hidden-container" :class="openRegister ? '' : 'hidden'">
         <form
           class="register-form"
           @submit.prevent="onSubmit"
@@ -96,8 +96,7 @@ export default defineComponent({
   name: "RegisterForm",
   data() {
     return {
-      toggleBurger: "account-f92.png",
-      toggleInvisible: "none",
+      openRegister: false,
       name: "",
       userName: "",
       email: "",
@@ -111,13 +110,7 @@ export default defineComponent({
   methods: {
     ...mapActions(["addUserAction"]),
     toggleRegister() {
-      if (this.toggleBurger === "account-f92.png") {
-        this.toggleInvisible = "block";
-        this.toggleBurger = "Selected-burger-menu.png";
-      } else {
-        this.toggleInvisible = "none";
-        this.toggleBurger = "account-f92.png";
-      }
+      this.openRegister = !this.openRegister;
     },
     checkForm() {
       if (
@@ -178,6 +171,9 @@ export default defineComponent({
   min-height: 320px;
   background-color: $alterColor;
   border-radius: 0 0 25px 25px;
+}
+.hidden {
+  display: none;
 }
 .register-header {
   display: flex;
@@ -246,6 +242,22 @@ input {
     border: solid 2px $backgroundColor;
     color: $textColor;
     cursor: default;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .register-container {
+    margin-right: 15px;
+  }
+  .hidden-container {
+    margin-right: 15px;
+    display: block;
+  }
+  .register-toggler {
+    display: none;
+  }
+  .register {
+    border-right: solid 2px $mainColor;
   }
 }
 </style>

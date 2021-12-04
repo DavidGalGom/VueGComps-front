@@ -6,21 +6,23 @@
     <h1 class="shopping-cart-title" :class="anyComponent ? '' : 'hidden'">
       You have an empty product list
     </h1>
-    <ul
-      class="productCart-list"
-      v-for="productInCart in productsInCart"
-      :key="productInCart.id"
-    >
-      <li class="productCart-id">
-        <CartCard
-          :id="productInCart.id"
-          :name="productInCart.name"
-          :price="productInCart.price"
-          :mainImage="productInCart.mainImage"
-          :description="productInCart.description"
-        />
-      </li>
-    </ul>
+    <div class="list-container">
+      <ul
+        class="productCart-list"
+        v-for="productInCart in productsInCart"
+        :key="productInCart.id"
+      >
+        <li class="productCart-id">
+          <CartCard
+            :id="productInCart.id"
+            :name="productInCart.name"
+            :price="productInCart.price"
+            :mainImage="productInCart.mainImage"
+            :description="productInCart.description"
+          />
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -80,5 +82,13 @@ export default defineComponent({
 }
 .hidden {
   display: none;
+}
+@media (min-width: 700px) and (max-width: 1000px) {
+  .list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
 }
 </style>

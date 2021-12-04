@@ -46,6 +46,7 @@ export default defineComponent({
   flex-direction: column;
   align-content: center;
   align-items: center;
+  justify-content: center;
   min-height: 250px;
 }
 .logout-button {
@@ -65,6 +66,14 @@ export default defineComponent({
     cursor: pointer;
     height: 50px;
     width: 120px;
+  }
+}
+@media (min-width: 700px) and (max-width: 1000px) {
+  .logout-button {
+    border-radius: 20px;
+    font-size: 26px;
+    height: 75px;
+    width: 180px;
   }
 }
 </style>

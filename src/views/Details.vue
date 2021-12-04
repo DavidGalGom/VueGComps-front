@@ -184,4 +184,51 @@ export default defineComponent({
 .hidden {
   display: none;
 }
+@media (min-width: 700px) and (max-width: 1000px) {
+  .details-container {
+    width: 600px;
+  }
+  .container-name-price {
+    margin: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .component-name {
+    font-size: 22px;
+  }
+  .component-price {
+    font-size: 24px;
+  }
+  .back-button {
+    margin-left: 50px;
+    margin-top: 40px;
+    height: 80px;
+  }
+  .component-image {
+    border-radius: 30px 30px 0 0;
+    width: 400px;
+  }
+  .previous-carousel,
+  .next-carousel {
+    width: 50px;
+    height: 75px;
+    margin: 20px;
+  }
+  .add-cart-button {
+    margin-top: 0;
+    border-radius: 0 0 30px 30px;
+    width: 400px;
+    height: 65px;
+    font-size: 30px;
+  }
+  .details-subtitle {
+    font-size: 24px;
+    margin-left: 50px;
+  }
+  .details-paragraph {
+    font-size: 18px;
+    margin-left: 20px;
+  }
+}
 </style>
