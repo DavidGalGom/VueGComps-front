@@ -147,6 +147,25 @@ const actions = {
     console.log(data);
     commit("deleteProductToCart", data);
   },
+  async buyAllComponentsAction({
+    commit,
+  }: ActionContext<State, State>): Promise<void> {
+    const token = JSON.parse(localStorage.getItem("userToken") || "");
+    const user: User = jwtDecode(token);
+    const userId = user.id;
+    const authorization = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const emptyComponents = { components: [] };
+    const { data } = await axios.put(
+      `${process.env.VUE_APP_API_URL}/users/${user.id}`,
+      emptyComponents,
+      authorization
+    );
+    commit("buyAllComponents", data);
+  },
 };
 
 export default actions;
