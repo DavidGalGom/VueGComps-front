@@ -22,10 +22,10 @@ describe("Given a Login component", () => {
       });
 
       expect(wrapper.html()).toContain(
-        '<form class="register-form" autocomplete="off">'
+        '<form id="register-form" class="register-form" autocomplete="off">'
       );
       expect(wrapper.html()).toContain(
-        '<form class="login-form" autocomplete="off">'
+        '<form class="login-form" autocomplete="off" id="login-form">'
       );
     });
   });

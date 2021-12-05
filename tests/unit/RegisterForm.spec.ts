@@ -22,7 +22,7 @@ describe("Given a RegisterForm component", () => {
       });
 
       expect(wrapper.html()).toContain(
-        '<form class="register-form" autocomplete="off">'
+        '<form id="register-form" class="register-form" autocomplete="off">'
       );
     });
   });

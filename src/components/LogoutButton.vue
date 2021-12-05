@@ -47,7 +47,7 @@ export default defineComponent({
   align-content: center;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
+  min-height: 57vh;
 }
 .logout-button {
   border-radius: 15px;
