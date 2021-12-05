@@ -1,0 +1,19 @@
+const stringedId:any = number.toString([id])
+    const length:number |any = user.components?.length;
+
+    let components:any = [];
+    for (let i = 0; i < length; i++){
+      if (user.components?[i] !== stringedId) {
+        components = components.push(user.components ? [i],
+      };
+    }
+    const newUserComponents = {
+      components,
+    };
+
+
+
+
+    const newProducts = {
+      components: [...user.components, id],
+    };

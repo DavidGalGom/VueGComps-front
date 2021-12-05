@@ -21,13 +21,16 @@ const mutations = {
   },
   getUserCompsById(state: State, payload: Array<Product>): void {
     state.productsInCart = [...payload];
-    state.productsInCartId = [...payload];
   },
   addProductToCart(state: State, payload: Array<Product>): void {
     state.user.components = payload;
     state.productsInCart = payload;
   },
   deleteProductToCart(state: State, payload: Array<Product>): void {
+    state.user.components = payload;
+    state.productsInCart = payload;
+  },
+  buyAllComponents(state: State, payload: Array<Product>): void {
     state.user.components = payload;
     state.productsInCart = payload;
   },

@@ -55,7 +55,11 @@ export default defineComponent({
     ...mapState(["productsInCart"]),
   },
   methods: {
-    ...mapActions(["getUserCompsByIdAction"]),
+    ...mapActions(["getUserCompsByIdAction", "buyAllComponentsAction"]),
+    buyAll() {
+      this.buyAllComponentsAction();
+      this.$router.push("/");
+    },
   },
   mounted() {
     this.getUserCompsByIdAction();
