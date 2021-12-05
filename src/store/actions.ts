@@ -128,11 +128,15 @@ const actions = {
     console.log(id);
     console.log(user.id);
     console.log(user.components);
-    const newProducts = user.components?.filter(
+    const components = user.components?.filter(
       (component: Product) => component.id !== id
     );
+    const newUserComponents = {
+      components,
+    };
 
-    console.log(newProducts);
+    console.log(components);
+    console.log(newUserComponents);
     const authorization = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -141,7 +145,7 @@ const actions = {
 
     const { data } = await axios.put(
       `${process.env.VUE_APP_API_URL}/users/${user.id}`,
-      newProducts,
+      newUserComponents,
       authorization
     );
     console.log(data);

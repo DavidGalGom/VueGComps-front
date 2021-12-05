@@ -28,7 +28,7 @@ export default defineComponent({
   name: "CartCard",
   props: ["id", "name", "description", "price", "mainImage"],
   computed: {
-    ...mapState(["productsInCart", "productsInCartId"]),
+    ...mapState(["productsInCart"]),
   },
   methods: {
     ...mapActions(["deleteProductToCartAction"]),

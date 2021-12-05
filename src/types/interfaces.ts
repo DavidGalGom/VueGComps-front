@@ -21,16 +21,12 @@ interface User {
   image?: string;
 }
 
-interface IdComponent {
-  id: string;
-}
 interface State {
   products: Array<Product>;
   productById: Product;
   user: User;
   isAuthenticated: boolean;
   productsInCart: Array<Product>;
-  productsInCartId: Array<IdComponent>;
 }
 
 export { State, User, Product };
