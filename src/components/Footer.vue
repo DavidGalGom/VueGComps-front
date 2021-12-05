@@ -125,4 +125,16 @@ a {
     transform: scale(1.1);
   }
 }
+@media (min-width: 1000px) {
+  .left-footer-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .about-us,
+  .help,
+  .others {
+    margin-top: 40px;
+  }
+}
 </style>

@@ -76,6 +76,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 63vh;
 }
 .shopping-cart-title {
   color: $textColor;
@@ -132,6 +133,11 @@ export default defineComponent({
       height: 75px;
       width: 180px;
     }
+  }
+}
+@media (min-height: 700px) {
+  .shopping-cart {
+    min-height: 73vh;
   }
 }
 </style>
