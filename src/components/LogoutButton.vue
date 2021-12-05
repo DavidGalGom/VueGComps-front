@@ -47,7 +47,7 @@ export default defineComponent({
   align-content: center;
   align-items: center;
   justify-content: center;
-  min-height: 250px;
+  min-height: 60vh;
 }
 .logout-button {
   border-radius: 15px;
@@ -78,6 +78,11 @@ export default defineComponent({
       height: 75px;
       width: 180px;
     }
+  }
+}
+@media (min-height: 700px) {
+  .logout-container {
+    min-height: 70vh;
   }
 }
 </style>

@@ -23,7 +23,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
-import state from "../store/state";
 
 export default defineComponent({
   name: "CartCard",
@@ -34,9 +33,7 @@ export default defineComponent({
   methods: {
     ...mapActions(["deleteProductToCartAction"]),
     deleteToCart() {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { id }: any = state.productsInCart;
-      this.deleteProductToCartAction(id);
+      this.deleteProductToCartAction(this.id);
     },
   },
 });

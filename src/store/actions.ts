@@ -90,14 +90,19 @@ const actions = {
   },
   async addProductToCartAction(
     { commit }: ActionContext<State, State>,
-    { id, components }: { id: string; components: Array<Product> }
+    id: string
   ): Promise<void> {
     const token = JSON.parse(localStorage.getItem("userToken") || "");
     const user: User = jwtDecode(token);
+    console.log(token);
+    console.log(id);
+    console.log(user.id);
+    console.log(user.components);
     const newProducts = {
       ...user.components,
       id,
     };
+    console.log(newProducts);
     const authorization = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -115,26 +120,32 @@ const actions = {
 
   async deleteProductToCartAction(
     { commit }: ActionContext<State, State>,
-    { id, components }: { id: string; components: Array<Product> }
+    id: string
   ): Promise<void> {
     const token = JSON.parse(localStorage.getItem("userToken") || "");
     const user: User = jwtDecode(token);
-    const newProducts = {
-      components: user.components?.filter((component) => component.id !== id),
-    };
+    console.log(token);
+    console.log(id);
+    console.log(user.id);
+    console.log(user.components);
+    const newProducts = user.components?.filter(
+      (component: Product) => component.id !== id
+    );
+
+    console.log(newProducts);
     const authorization = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
 
-    await axios.put(
+    const { data } = await axios.put(
       `${process.env.VUE_APP_API_URL}/users/${user.id}`,
       newProducts,
       authorization
     );
-
-    commit("deleteProductToCart", newProducts);
+    console.log(data);
+    commit("deleteProductToCart", data);
   },
 };
 
