@@ -13,6 +13,7 @@
       </div>
       <div class="hidden-container" :class="openRegister ? '' : 'hidden'">
         <form
+          id="register-form"
           class="register-form"
           @submit.prevent="onSubmit"
           autocomplete="off"
@@ -64,13 +65,15 @@
             :class="notSame ? 'no' : ''"
             type="password"
           />
-          <label for="age"></label>
+          <label for="age">Age:You must have 18+</label>
           <input
             class="age-input"
             id="age"
             v-model="age"
             type="number"
             placeholder="Enter your age"
+            min="18"
+            max="120"
           />
           <button
             class="register-button"
@@ -100,7 +103,7 @@ export default defineComponent({
       name: "",
       userName: "",
       email: "",
-      age: +"Enter your age",
+      age: 18,
       password: "",
       password2: "",
       notSame: false,
@@ -139,7 +142,7 @@ export default defineComponent({
         await this.addUserAction(user);
         this.userName = "";
         this.name = "";
-        this.age = 0;
+        this.age = +"";
         this.email = "";
         this.password = "";
         this.password2 = "";
