@@ -105,4 +105,17 @@ export default defineComponent({
     background-color: $alterColor;
   }
 }
+@media (min-width: 1000px) {
+  .card-container {
+    height: 190px;
+    width: 400px;
+  }
+  .cart-buy-button {
+    width: 404px;
+  }
+  .mainImage-component {
+    height: 154px;
+    width: 237px;
+  }
+}
 </style>

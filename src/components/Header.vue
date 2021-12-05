@@ -15,7 +15,6 @@
         alt="VueGComps logo"
         height="70"
     /></router-link>
-
     <router-link class="about-link" to="/shopping-cart"
       ><img
         class="shopping-cart-logo"
@@ -184,6 +183,31 @@ a {
   .login-bar,
   .logout-bar {
     display: block;
+    margin: 0 10px;
+    &:hover {
+      color: $mainColor;
+    }
+  }
+  .about-link {
+    display: flex;
+    align-items: center;
+  }
+  .login-link {
+    display: flex;
+    align-items: center;
+  }
+  .hidden {
+    display: none;
+  }
+  .vuegcomp-logo {
+    height: 100px;
+  }
+  .header-nav-bar {
+    justify-content: flex-end;
+  }
+  .home-link {
+    position: absolute;
+    left: 40px;
   }
 }
 </style>
