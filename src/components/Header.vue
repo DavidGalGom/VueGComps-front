@@ -22,21 +22,37 @@
         src="../../public/shopping-cart-f92.png"
         alt="Shopping cart"
         height="50"
-    /></router-link>
+      />
+      <h2 class="cart-bar">Shopping Cart</h2>
+    </router-link>
     <router-link class="login-link" to="/login"
       ><img
         class="login-logo"
         :class="$store.state.isAuthenticated ? 'hidden' : ''"
         src="../../public/login-f92.png"
         alt="Login/Logout"
-        height="50" />
+        height="50"
+      />
       <img
         class="logout-logo"
         :class="$store.state.isAuthenticated ? '' : 'hidden'"
         src="../../public/logout-f92.png"
         alt="Login/Logout"
         height="50"
-    /></router-link>
+      />
+      <h2
+        class="login-bar"
+        :class="$store.state.isAuthenticated ? 'hidden' : ''"
+      >
+        Login
+      </h2>
+      <h2
+        class="logout-bar"
+        :class="$store.state.isAuthenticated ? '' : 'hidden'"
+      >
+        Logout
+      </h2>
+    </router-link>
   </div>
   <div class="extended-nav-bar" :style="{ display: toggleInvisible }">
     <div class="extended-home">
@@ -111,6 +127,11 @@ export default defineComponent({
   z-index: 1;
   margin-bottom: 20px;
 }
+.cart-bar,
+.login-bar,
+.logout-bar {
+  display: none;
+}
 .extended-home,
 .extended-cart,
 .extended-login {
@@ -154,5 +175,15 @@ a {
 }
 .hidden {
   display: none;
+}
+@media (min-width: 1000px) {
+  .burger-menu-logo {
+    display: none;
+  }
+  .cart-bar,
+  .login-bar,
+  .logout-bar {
+    display: block;
+  }
 }
 </style>
