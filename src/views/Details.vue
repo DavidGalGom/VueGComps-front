@@ -2,55 +2,68 @@
   <div class="details">
     <h1 class="details-title">Details</h1>
     <div class="details-container">
-      <div class="icons-details-container">
+      <div details-main-info-desktop>
+        <div class="icons-details-container">
+          <img
+            @click="onSubmit"
+            class="back-button"
+            src="../../public/back-button-f92.png"
+            alt="back button"
+            height="50"
+          />
+          <img
+            class="favorite-button"
+            :class="$store.state.isAuthenticated ? 'hidden' : 'hidden'"
+            src="../../public/favorite-f92.png"
+            alt="favorite button"
+            height="50"
+          />
+        </div>
+        <div class="container-name-price">
+          <p class="component-name">{{ productById.name }}</p>
+          <p class="component-price">{{ productById.price }} €</p>
+        </div>
+        <div class="container-carousel">
+          <img
+            class="previous-carousel"
+            src="../../public/previous-f92.png"
+            width="20"
+            height="30"
+            alt="previous arrow"
+          />
+          <img
+            class="component-image"
+            :src="productById.mainImage"
+            alt="Component"
+            width="250"
+          />
+          <img
+            class="next-carousel"
+            src="../../public/next-f92.png"
+            width="20"
+            height="30"
+            alt="next arrow"
+          />
+        </div>
+        <div class="button-container">
+          <button class="add-cart-button" @click="addToCart">
+            Add to cart
+          </button>
+        </div>
+      </div>
+      <div class="details-information-desktop">
+        <h2 class="details-subtitle">Product details:</h2>
+        <p class="details-paragraph">
+          {{ productById.description }}
+        </p>
         <img
           @click="onSubmit"
-          class="back-button"
+          class="back-button-desktop"
           src="../../public/back-button-f92.png"
           alt="back button"
-          height="50"
-        />
-        <img
-          class="favorite-button"
-          :class="$store.state.isAuthenticated ? 'hidden' : 'hidden'"
-          src="../../public/favorite-f92.png"
-          alt="favorite button"
-          height="50"
+          height="80"
         />
       </div>
-      <div class="container-name-price">
-        <p class="component-name">{{ productById.name }}</p>
-        <p class="component-price">{{ productById.price }} €</p>
-      </div>
-      <div class="container-carousel">
-        <img
-          class="previous-carousel"
-          src="../../public/previous-f92.png"
-          width="20"
-          height="30"
-          alt="previous arrow"
-        />
-        <img
-          class="component-image"
-          :src="productById.mainImage"
-          alt="Component"
-          width="250"
-        />
-        <img
-          class="next-carousel"
-          src="../../public/next-f92.png"
-          width="20"
-          height="30"
-          alt="next arrow"
-        />
-      </div>
-      <div class="button-container">
-        <button class="add-cart-button" @click="addToCart">Add to cart</button>
-      </div>
-      <h2 class="details-subtitle">Product details:</h2>
-      <p class="details-paragraph">
-        {{ productById.description }}
-      </p>
     </div>
   </div>
 </template>
@@ -138,11 +151,18 @@ export default defineComponent({
 .component-price {
   color: $mainColor;
   font-size: 18px;
+  width: 45%;
 }
 .container-carousel {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.component-image {
+  object-fit: cover;
+  height: 160px;
+  width: 240px;
+  margin: 18px 5px;
 }
 .previous-carousel,
 .next-carousel {
@@ -178,10 +198,13 @@ export default defineComponent({
 .details-paragraph {
   font-size: 16px;
   padding: 0 30px;
-  word-break: break-all;
+  word-break: keep-all;
   margin-bottom: 30px;
 }
 .hidden {
+  display: none;
+}
+.back-button-desktop {
   display: none;
 }
 @media (min-width: 700px) {
@@ -189,16 +212,16 @@ export default defineComponent({
     width: 600px;
   }
   .container-name-price {
-    margin: 0 30px;
+    margin-left: 100px;
+    width: 400px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
   }
   .component-name {
     font-size: 22px;
   }
   .component-price {
     font-size: 24px;
+    width: 28%;
   }
   .back-button {
     margin-left: 50px;
@@ -208,6 +231,9 @@ export default defineComponent({
   .component-image {
     border-radius: 30px 30px 0 0;
     width: 400px;
+    object-fit: cover;
+    height: 260px;
+    margin: 18px 5px 0 5px;
   }
   .previous-carousel,
   .next-carousel {
@@ -229,6 +255,44 @@ export default defineComponent({
   .details-paragraph {
     font-size: 18px;
     margin-left: 20px;
+  }
+}
+@media (min-width: 1000px) {
+  .details-container {
+    background-color: $backgroundColor;
+    display: flex;
+    flex-direction: row;
+    min-height: 67vh;
+    width: 95%;
+  }
+  .back-button {
+    display: none;
+  }
+  .details-information-desktop {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }
+  .back-button-desktop {
+    display: block;
+    height: 80px;
+    width: 80px;
+    align-self: center;
+    &:hover {
+      cursor: pointer;
+      transform: scale(0.9);
+    }
+  }
+  .details-title {
+    display: none;
+  }
+  .details-paragraph {
+    min-height: 40%;
+  }
+}
+@media (min-height: 700px) {
+  .details {
+    min-height: 75vh;
   }
 }
 </style>
