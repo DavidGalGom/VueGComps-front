@@ -6,6 +6,15 @@
     <h1 class="shopping-cart-title" :class="anyComponent ? '' : 'hidden'">
       You have an empty product list
     </h1>
+    <button
+      class="get-all-button"
+      :class="anyComponent ? 'hidden' : ''"
+      type="submit"
+      value="GetAll"
+      @click="buyAll"
+    >
+      Get ALL!!!
+    </button>
     <div class="list-container">
       <ul
         class="productCart-list"
@@ -63,6 +72,11 @@ export default defineComponent({
 
 <style scoped lang="scss">
 @import "./src/styles/variables";
+.shopping-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .shopping-cart-title {
   color: $textColor;
   text-align: center;
@@ -83,12 +97,41 @@ export default defineComponent({
 .hidden {
   display: none;
 }
+.get-all-button {
+  border-radius: 15px;
+  margin-top: 10px;
+  background-color: $mainColor;
+  color: $backgroundColor;
+  font-size: 22px;
+  margin-bottom: 40px;
+  height: 50px;
+  width: 120px;
+  border: none;
+  &:hover {
+    background-color: $alterColor;
+    color: $mainColor;
+    border: solid 2px $mainColor;
+    cursor: pointer;
+    height: 50px;
+    width: 120px;
+  }
+}
 @media (min-width: 700px) {
   .list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+  }
+  .get-all-button {
+    border-radius: 20px;
+    font-size: 26px;
+    height: 75px;
+    width: 180px;
+    &:hover {
+      height: 75px;
+      width: 180px;
+    }
   }
 }
 </style>
