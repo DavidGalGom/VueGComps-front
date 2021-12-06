@@ -96,6 +96,7 @@ export default defineComponent({
         const { components } = state.user;
 
         this.addProductToCartAction(components);
+        this.$toast("Product added to Cart");
         this.getUserCompsByIdAction(this.user.id);
       }
     },

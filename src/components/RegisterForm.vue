@@ -146,6 +146,7 @@ export default defineComponent({
         this.email = "";
         this.password = "";
         this.password2 = "";
+        this.$toast("Register successfully completed");
       } catch (error) {
         this.notSame = true;
       }
