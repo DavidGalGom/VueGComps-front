@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <div class="login-container">
+    <div class="login-container" :class="correctData ? '' : 'shake-form'">
       <h2 class="login-title">Login:</h2>
       <form
         class="login-form"
@@ -24,7 +24,9 @@
           type="password"
         />
         <label for="password"></label>
-
+        <h3 class="wrong-data-login" :class="correctData ? 'hidden' : ''">
+          Please introduce a correct data
+        </h3>
         <button
           class="login-button"
           type="submit"
@@ -50,6 +52,7 @@ export default defineComponent({
       userName: "",
       password: "",
       isDisabled: true,
+      correctData: true,
     };
   },
   methods: {
@@ -59,11 +62,15 @@ export default defineComponent({
         userName: this.userName,
         password: this.password,
       };
-      await this.loginUserAction(user);
-      this.userName = "";
-      this.password = "";
-      this.$router.push("/");
-      window.scrollTo(0, 0);
+      try {
+        await this.loginUserAction(user);
+        this.userName = "";
+        this.password = "";
+        this.$router.push("/");
+        window.scrollTo(0, 0);
+      } catch {
+        this.correctData = false;
+      }
     },
   },
 });
@@ -140,10 +147,53 @@ input {
     cursor: default;
   }
 }
+.hidden {
+  display: none;
+}
 
 @media (min-width: 700px) {
   .login-container {
     margin-left: 15px;
+  }
+}
+.shake-form {
+  animation: shake 0.5s;
+  border: solid $mainColor 3px;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
   }
 }
 </style>
