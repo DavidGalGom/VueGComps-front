@@ -58,7 +58,8 @@ export default defineComponent({
     ...mapActions(["getUserCompsByIdAction", "buyAllComponentsAction"]),
     buyAll() {
       this.buyAllComponentsAction();
-      this.$router.push("/");
+      this.$toast("Congratulations you acquired all the components");
+      this.anyComponent = true;
     },
   },
   mounted() {
