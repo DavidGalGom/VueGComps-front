@@ -167,7 +167,7 @@ describe("Given a store mutations object", () => {
     });
   });
 
-  describe("When getUserCompsById receives a state and payload with a user", () => {
+  describe("When getUserCompsById receives a state and payload with an array of components", () => {
     test("Then it should put all his components in the stage", () => {
       const state = stateMock;
       const payload: Array<Product> = [
@@ -191,7 +191,7 @@ describe("Given a store mutations object", () => {
     });
   });
 
-  describe("When getUserCompsById receives a state and payload with a user", () => {
+  describe("When getUserCompsById receives a state and payload with an array of components", () => {
     test("Then it should put all his cart in the stage", () => {
       const state = stateMock;
       const payload: Array<Product> = [
@@ -211,6 +211,53 @@ describe("Given a store mutations object", () => {
       mutations.getUserCompsById(state, payload);
 
       expect(state.productsInCart).toEqual([...payload]);
+    });
+  });
+
+  describe("When updateProductToCart receives a state and payload with an array of components", () => {
+    test("Then it should put all his components in the stage", () => {
+      const state = stateMock;
+      const payload: Array<Product> = [
+        {
+          name: "product name",
+          type: "product type",
+          price: 1,
+          mainImage: "product main image",
+          alterImage: "product alter image",
+          brand: "product brand",
+          description: "product description",
+          isFavorite: false,
+          id: "1",
+        },
+      ];
+      const newUserComponents: Array<string> = [];
+      payload.forEach((product) => newUserComponents.push(product.id));
+      mutations.updateProductToCart(state, payload);
+
+      expect(state.user.components).toEqual(newUserComponents);
+    });
+  });
+
+  describe("When updateProductToCart receives a state and payload with an array of components", () => {
+    test("Then it should put all his cart in the stage", () => {
+      const state = stateMock;
+      const payload: Array<Product> = [
+        {
+          name: "product name",
+          type: "product type",
+          price: 1,
+          mainImage: "product main image",
+          alterImage: "product alter image",
+          brand: "product brand",
+          description: "product description",
+          isFavorite: false,
+          id: "1",
+        },
+      ];
+
+      mutations.updateProductToCart(state, payload);
+
+      expect(state.productsInCart).toEqual(payload);
     });
   });
 });
