@@ -260,4 +260,50 @@ describe("Given a store mutations object", () => {
       expect(state.productsInCart).toEqual(payload);
     });
   });
+
+  describe("When buyAllComponents receives a state and payload with an array of components", () => {
+    test("Then it should put all his components in the stage", () => {
+      const state = stateMock;
+      const payload: Array<Product> = [
+        {
+          name: "",
+          type: "",
+          price: +"",
+          mainImage: "",
+          alterImage: "",
+          brand: "",
+          description: "",
+          isFavorite: false,
+          id: "",
+        },
+      ];
+      const newUserComponents: Array<string> = [];
+      mutations.buyAllComponents(state, payload);
+
+      expect(state.user.components).toEqual(newUserComponents);
+    });
+  });
+
+  describe("When buyAllComponents receives a state and payload with an array of components", () => {
+    test("Then it should put all his cart in the stage", () => {
+      const state = stateMock;
+      const payload: Array<Product> = [
+        {
+          name: "",
+          type: "",
+          price: +"",
+          mainImage: "",
+          alterImage: "",
+          brand: "",
+          description: "",
+          isFavorite: false,
+          id: "",
+        },
+      ];
+
+      mutations.buyAllComponents(state, payload);
+
+      expect(state.productsInCart).toEqual(payload);
+    });
+  });
 });
