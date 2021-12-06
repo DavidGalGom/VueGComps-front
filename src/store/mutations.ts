@@ -20,18 +20,19 @@ const mutations = {
     state.user = payload;
   },
   getUserCompsById(state: State, payload: Array<Product>): void {
+    const newUserComponents: Array<string> = [];
+    payload.forEach((product) => newUserComponents.push(product.id));
+    state.user.components = newUserComponents;
     state.productsInCart = [...payload];
   },
-  addProductToCart(state: State, payload: Array<Product>): void {
-    state.user.components = payload;
-    state.productsInCart = payload;
-  },
-  deleteProductToCart(state: State, payload: Array<Product>): void {
-    state.user.components = payload;
+  updateProductToCart(state: State, payload: Array<Product>): void {
+    const newUserComponents: Array<string> = [];
+    payload.forEach((product) => newUserComponents.push(product.id));
+    state.user.components = newUserComponents;
     state.productsInCart = payload;
   },
   buyAllComponents(state: State, payload: Array<Product>): void {
-    state.user.components = payload;
+    state.user.components = [];
     state.productsInCart = payload;
   },
 };

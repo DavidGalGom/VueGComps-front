@@ -2,7 +2,8 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { ActionContext } from "vuex";
-import { Product, State, User } from "../types/interfaces";
+import { State, User } from "../types/interfaces";
+import state from "./state";
 
 const actions = {
   async getProductsAction({
@@ -90,32 +91,28 @@ const actions = {
   },
   async addProductToCartAction(
     { commit }: ActionContext<State, State>,
-    id: string
+    components: Array<string>
   ): Promise<void> {
+    console.log(components);
+    const { id } = state.productById;
     const token = JSON.parse(localStorage.getItem("userToken") || "");
     const user: User = jwtDecode(token);
     console.log(token);
-    console.log(id);
-    console.log(user.id);
-    console.log(user.components);
-    const newProducts = {
-      ...user.components,
-      id,
-    };
-    console.log(newProducts);
+    const newProducts = { components: [...(components as string[]), id] };
     const authorization = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
-
-    await axios.put(
+    console.log(newProducts);
+    const { data } = await axios.put(
       `${process.env.VUE_APP_API_URL}/users/${user.id}`,
       newProducts,
       authorization
     );
-
-    commit("addProductToCart", newProducts);
+    console.log(data);
+    console.log(data.components);
+    commit("updateProductToCart", data.components);
   },
 
   async deleteProductToCartAction(
@@ -124,19 +121,14 @@ const actions = {
   ): Promise<void> {
     const token = JSON.parse(localStorage.getItem("userToken") || "");
     const user: User = jwtDecode(token);
-    console.log(token);
-    console.log(id);
-    console.log(user.id);
-    console.log(user.components);
+
     const components = user.components?.filter(
-      (component: Product) => component.id !== id
+      (componentId: string) => componentId !== id
     );
     const newUserComponents = {
       components,
     };
 
-    console.log(components);
-    console.log(newUserComponents);
     const authorization = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -149,14 +141,14 @@ const actions = {
       authorization
     );
     console.log(data);
-    commit("deleteProductToCart", data);
+    console.log(data.components);
+    commit("updateProductToCart", data.components);
   },
   async buyAllComponentsAction({
     commit,
   }: ActionContext<State, State>): Promise<void> {
     const token = JSON.parse(localStorage.getItem("userToken") || "");
     const user: User = jwtDecode(token);
-    const userId = user.id;
     const authorization = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -168,7 +160,7 @@ const actions = {
       emptyComponents,
       authorization
     );
-    commit("buyAllComponents", data);
+    commit("buyAllComponents", data.components);
   },
 };
 
