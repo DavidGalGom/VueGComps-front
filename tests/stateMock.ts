@@ -35,5 +35,7 @@ const stateMock = {
     components: [],
     image: "image",
   },
+  isAuthenticated: false,
+  productsInCart: [],
 };
 export default stateMock as unknown as State;
