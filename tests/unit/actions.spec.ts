@@ -56,4 +56,37 @@ describe("Given actions ", () => {
       expect(commit).toHaveBeenCalledWith("logoutUser", loggedUser);
     });
   });
+
+  describe("When getUserCompsByIdAction is summoned", () => {
+    test.skip("Then it should call commit with getUserCompsById and data.components", async () => {
+      const data: User = mockedState.user;
+      mockedAxios.get.mockResolvedValue({ data });
+      JSON.parse = jest.fn().mockResolvedValue("12345");
+
+      await actions.getUserCompsByIdAction(configActionContext(commit));
+
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith("getUserCompsById", data.components);
+    });
+  });
+
+  describe("When addProductToCartAction is summoned", () => {
+    test.skip("Then it should call commit with updateProductToCart and data.components", async () => {
+      const data: User = mockedState.user;
+      mockedAxios.put.mockResolvedValue({ data });
+      JSON.parse = jest.fn().mockResolvedValue("12345");
+      const components = [""];
+
+      await actions.addProductToCartAction(
+        configActionContext(commit),
+        components
+      );
+
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith(
+        "updateProductToCart",
+        data.components
+      );
+    });
+  });
 });
