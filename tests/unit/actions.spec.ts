@@ -1,0 +1,25 @@
+import axios from "axios";
+import { Commit } from "vuex";
+import configActionContext from "../test-utils";
+import actions from "@/store/actions";
+import { Product, User } from "@/types/interfaces";
+import mockedState from "../stateMock";
+
+jest.mock("axios");
+
+const mockedAxios = axios as jest.Mocked<typeof axios>;
+const commit = jest.fn() as jest.MockedFunction<Commit>;
+
+describe("Given actions ", () => {
+  describe("When getProductsAction is summoned", () => {
+    test("Then it should call commit with getProducts and data", async () => {
+      const data: Array<Product> = mockedState.products;
+      mockedAxios.get.mockResolvedValue({ data });
+
+      await actions.getProductsAction(configActionContext(commit));
+
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith("getProducts", data);
+    });
+  });
+});
