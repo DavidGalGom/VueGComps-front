@@ -25,4 +25,25 @@ describe("Given a store mutations object", () => {
       expect(state.products).toEqual([...payload]);
     });
   });
+
+  describe("When getProductById receives a state and payload with the component", () => {
+    test("Then it should put the component in the state", () => {
+      const state = stateMock;
+      const payload: Product = {
+        name: "product name",
+        type: "product type",
+        price: 1,
+        mainImage: "product main image",
+        alterImage: "product alter image",
+        brand: "product brand",
+        description: "product description",
+        isFavorite: false,
+        id: "1",
+      };
+
+      mutations.getProductById(state, payload);
+
+      expect(state.productById).toBe(payload);
+    });
+  });
 });
