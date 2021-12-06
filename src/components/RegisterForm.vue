@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <div class="register-container">
+    <div class="register-container" :class="correctData ? '' : 'shake-form'">
       <div class="register-header">
         <h2 class="register-title">Register:</h2>
         <img
@@ -43,26 +43,18 @@
             type="email"
             placeholder="Enter your email"
           />
-          <label
-            for="password"
-            :class="notSame ? 'not-same-password' : ''"
-          ></label>
+          <label for="password"></label>
           <input
             id="password"
             v-model="password"
             placeholder="Enter your password"
-            :class="notSame ? 'no' : ''"
             type="password"
           />
-          <label
-            for="password"
-            :class="notSame ? 'not-same-password' : ''"
-          ></label>
+          <label for="password"></label>
           <input
             id="password2"
             v-model="password2"
             placeholder="Repeat your password"
-            :class="notSame ? 'no' : ''"
             type="password"
           />
           <label for="age">Age:You must have 18+</label>
@@ -75,6 +67,9 @@
             min="18"
             max="120"
           />
+          <h3 class="wrong-data-register" :class="correctData ? 'hidden' : ''">
+            Please introduce a correct data
+          </h3>
           <button
             class="register-button"
             type="submit"
@@ -106,8 +101,8 @@ export default defineComponent({
       age: 18,
       password: "",
       password2: "",
-      notSame: false,
       isDisabled: true,
+      correctData: true,
     };
   },
   methods: {
@@ -124,11 +119,7 @@ export default defineComponent({
         this.password !== "" &&
         this.password2 !== ""
       )
-        if (this.password !== this.password2) {
-          this.notSame = true;
-        } else {
-          this.isDisabled = false;
-        }
+        this.isDisabled = false;
     },
     async onSubmit() {
       const user: User = {
@@ -138,7 +129,7 @@ export default defineComponent({
         age: this.age,
         name: this.name,
       };
-      try {
+      if (this.password === this.password2) {
         await this.addUserAction(user);
         this.userName = "";
         this.name = "";
@@ -147,8 +138,9 @@ export default defineComponent({
         this.password = "";
         this.password2 = "";
         this.$toast("Register successfully completed");
-      } catch (error) {
-        this.notSame = true;
+        this.correctData = true;
+      } else if (this.password !== this.password2) {
+        this.correctData = false;
       }
     },
   },
@@ -246,6 +238,47 @@ input {
     border: solid 2px $backgroundColor;
     color: $textColor;
     cursor: default;
+  }
+}
+
+.shake-form {
+  animation: shake 0.5s;
+  border: solid $mainColor 3px;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
   }
 }
 
