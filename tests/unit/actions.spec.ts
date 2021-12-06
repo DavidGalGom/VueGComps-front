@@ -22,4 +22,17 @@ describe("Given actions ", () => {
       expect(commit).toHaveBeenCalledWith("getProducts", data);
     });
   });
+
+  describe("When getProductByIdAction is summoned", () => {
+    test("Then it should call commit with getProductById and data", async () => {
+      const data: Product = mockedState.productById;
+      mockedAxios.get.mockResolvedValue({ data });
+      const id = "12345";
+
+      await actions.getProductByIdAction(configActionContext(commit), id);
+
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith("getProductById", data);
+    });
+  });
 });
