@@ -62,7 +62,7 @@ export default defineComponent({
       await this.loginUserAction(user);
       this.userName = "";
       this.password = "";
-      this.$router.push("/shopping-cart");
+      this.$router.push("/");
       window.scrollTo(0, 0);
     },
   },
