@@ -126,4 +126,44 @@ describe("Given a store mutations object", () => {
       expect(state.user).toBe(payload);
     });
   });
+
+  describe("When loggedUser receives a state and payload with a user", () => {
+    test("Then it should put isAuthenticated = true", () => {
+      const state = stateMock;
+      const payload: User = {
+        name: "user",
+        userName: "user name",
+        password: "password",
+        email: "email",
+        age: 10,
+        isAdmin: false,
+        components: [],
+        image: "image",
+      };
+
+      mutations.loggedUser(state, payload);
+
+      expect(state.isAuthenticated).toBe(true);
+    });
+  });
+
+  describe("When loggedUser receives a state and payload with a user", () => {
+    test("Then it should put user data in the stage", () => {
+      const state = stateMock;
+      const payload: User = {
+        name: "user",
+        userName: "user name",
+        password: "password",
+        email: "email",
+        age: 10,
+        isAdmin: false,
+        components: [],
+        image: "image",
+      };
+
+      mutations.loggedUser(state, payload);
+
+      expect(state.user).toBe(payload);
+    });
+  });
 });
