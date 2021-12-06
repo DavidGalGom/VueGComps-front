@@ -35,4 +35,25 @@ describe("Given actions ", () => {
       expect(commit).toHaveBeenCalledWith("getProductById", data);
     });
   });
+
+  describe("When the logoutUserAction is summoned", () => {
+    test("Then it should call commit with logoutUser", async () => {
+      const loggedUser: User = {
+        id: "",
+        name: "",
+        userName: "",
+        password: "",
+        email: "",
+        age: +"",
+        isAdmin: false,
+        components: [],
+        image: "",
+      };
+
+      await actions.logoutUserAction(configActionContext(commit));
+
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith("logoutUser", loggedUser);
+    });
+  });
 });
