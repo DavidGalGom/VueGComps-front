@@ -67,7 +67,7 @@ export default defineComponent({
     if (state.isAuthenticated === false) {
       this.$router.push("/login");
     }
-    if (state.user.components.length === 0) {
+    if (state.productsInCart.length === 0) {
       this.anyComponent = true;
     }
   },

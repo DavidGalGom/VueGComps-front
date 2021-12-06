@@ -78,10 +78,14 @@ export default defineComponent({
   name: "Details",
 
   computed: {
-    ...mapState(["productById"]),
+    ...mapState(["productById", "user"]),
   },
   methods: {
-    ...mapActions(["getProductByIdAction", "addProductToCartAction"]),
+    ...mapActions([
+      "getProductByIdAction",
+      "addProductToCartAction",
+      "getUserCompsByIdAction",
+    ]),
     onSubmit() {
       this.$router.push("/");
     },
@@ -91,8 +95,8 @@ export default defineComponent({
       } else {
         const { components } = state.user;
 
-        console.log(components);
         this.addProductToCartAction(components);
+        this.getUserCompsByIdAction(this.user.id);
       }
     },
   },

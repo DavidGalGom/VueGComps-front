@@ -93,25 +93,21 @@ const actions = {
     { commit }: ActionContext<State, State>,
     components: Array<string>
   ): Promise<void> {
-    console.log(components);
     const { id } = state.productById;
     const token = JSON.parse(localStorage.getItem("userToken") || "");
     const user: User = jwtDecode(token);
-    console.log(token);
     const newProducts = { components: [...(components as string[]), id] };
     const authorization = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
-    console.log(newProducts);
     const { data } = await axios.put(
       `${process.env.VUE_APP_API_URL}/users/${user.id}`,
       newProducts,
       authorization
     );
-    console.log(data);
-    console.log(data.components);
+
     commit("updateProductToCart", data.components);
   },
 
@@ -121,14 +117,13 @@ const actions = {
   ): Promise<void> {
     const token = JSON.parse(localStorage.getItem("userToken") || "");
     const user: User = jwtDecode(token);
-
-    const components = user.components?.filter(
+    const beforeComponents = state.user.components;
+    const components = beforeComponents.filter(
       (componentId: string) => componentId !== id
     );
     const newUserComponents = {
       components,
     };
-
     const authorization = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -140,8 +135,6 @@ const actions = {
       newUserComponents,
       authorization
     );
-    console.log(data);
-    console.log(data.components);
     commit("updateProductToCart", data.components);
   },
   async buyAllComponentsAction({
