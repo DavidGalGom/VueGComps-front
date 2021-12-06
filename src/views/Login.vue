@@ -41,7 +41,7 @@ export default defineComponent({
 .login-title {
   color: $textColor;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
 }
 .hidden {
   display: none;
