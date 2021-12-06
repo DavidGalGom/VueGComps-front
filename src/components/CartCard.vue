@@ -28,12 +28,13 @@ export default defineComponent({
   name: "CartCard",
   props: ["id", "name", "description", "price", "mainImage"],
   computed: {
-    ...mapState(["productsInCart"]),
+    ...mapState(["productsInCart", "user"]),
   },
   methods: {
-    ...mapActions(["deleteProductToCartAction"]),
+    ...mapActions(["deleteProductToCartAction", "getUserCompsByIdAction"]),
     deleteToCart() {
       this.deleteProductToCartAction(this.id);
+      this.getUserCompsByIdAction(this.user.id);
     },
   },
 });

@@ -17,7 +17,7 @@ interface User {
   email?: string;
   age?: number;
   isAdmin?: boolean;
-  components?: Array<Product>;
+  components?: Array<string>;
   image?: string;
 }
 

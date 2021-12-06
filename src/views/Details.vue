@@ -78,10 +78,14 @@ export default defineComponent({
   name: "Details",
 
   computed: {
-    ...mapState(["productById"]),
+    ...mapState(["productById", "user"]),
   },
   methods: {
-    ...mapActions(["getProductByIdAction", "addProductToCartAction"]),
+    ...mapActions([
+      "getProductByIdAction",
+      "addProductToCartAction",
+      "getUserCompsByIdAction",
+    ]),
     onSubmit() {
       this.$router.push("/");
     },
@@ -89,9 +93,10 @@ export default defineComponent({
       if (state.isAuthenticated === false) {
         this.$router.push("/login");
       } else {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { id }: any = state.productById;
-        this.addProductToCartAction(id);
+        const { components } = state.user;
+
+        this.addProductToCartAction(components);
+        this.getUserCompsByIdAction(this.user.id);
       }
     },
   },
