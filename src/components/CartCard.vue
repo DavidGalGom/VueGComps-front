@@ -16,7 +16,7 @@
         <p class="component-price">{{ price }} €</p>
       </div>
     </div>
-    <button class="cart-buy-button">Proceed to BUY</button>
+    <button class="cart-buy-button" @click="buyToCart">Proceed to BUY</button>
   </div>
 </template>
 
@@ -35,6 +35,11 @@ export default defineComponent({
     deleteToCart() {
       this.deleteProductToCartAction(this.id);
       this.getUserCompsByIdAction(this.user.id);
+    },
+    buyToCart() {
+      this.deleteProductToCartAction(this.id);
+      this.getUserCompsByIdAction(this.user.id);
+      this.$toast("Purchase done successfully");
     },
   },
 });
