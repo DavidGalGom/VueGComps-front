@@ -6,6 +6,8 @@
   </div>
 </template>
 
+<script lang="ts"></script>
+
 <style lang="scss" scoped>
 @import "./src/styles/variables";
 .notFound-container {
