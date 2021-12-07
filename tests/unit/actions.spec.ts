@@ -137,4 +137,17 @@ describe("Given actions ", () => {
       expect(commit).toHaveBeenCalledWith("buyAllComponents", data.components);
     });
   });
+
+  describe("When checkTokenAction is summoned", () => {
+    test("Then it should call commit with loggedUser and jwtDecode(token)", async () => {
+      const data: User = mockedState.user;
+      mockedAxios.put.mockResolvedValue({ data });
+      JSON.parse = jest.fn().mockResolvedValue("12345");
+
+      await actions.checkTokenAction(configActionContext(commit));
+
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith("loggedUser", {});
+    });
+  });
 });
