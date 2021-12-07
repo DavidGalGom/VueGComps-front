@@ -22,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Details",
     component: () => import("../views/Details.vue"),
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => import("../views/NotFound.vue"),
+  },
 ];
 
 const router = createRouter({
