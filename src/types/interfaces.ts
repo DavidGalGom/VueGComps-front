@@ -27,6 +27,7 @@ interface State {
   user: User;
   isAuthenticated: boolean;
   productsInCart: Array<Product>;
+  isLoading: boolean;
 }
 
 export { State, User, Product };

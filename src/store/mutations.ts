@@ -35,6 +35,12 @@ const mutations = {
     state.user.components = [];
     state.productsInCart = payload;
   },
+  startLoading(state: State): void {
+    state.isLoading = true;
+  },
+  stopLoading(state: State): void {
+    state.isLoading = false;
+  },
 };
 
 export default mutations;
