@@ -107,4 +107,21 @@ describe("Given actions ", () => {
       expect(commit).toHaveBeenCalledWith("loginUser", {});
     });
   });
+
+  describe("When deleteProductToCartAction is summoned", () => {
+    test("Then it should call commit with updateProductToCart and data.components", async () => {
+      const data: User = mockedState.user;
+      mockedAxios.put.mockResolvedValue({ data });
+      JSON.parse = jest.fn().mockResolvedValue("12345");
+      const id = "12345";
+
+      await actions.deleteProductToCartAction(configActionContext(commit), id);
+
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith(
+        "updateProductToCart",
+        data.components
+      );
+    });
+  });
 });
