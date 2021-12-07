@@ -157,6 +157,9 @@ const actions = {
     );
     commit("buyAllComponents", data.components);
   },
+  toggleNightModeAction({ commit }: ActionContext<State, State>): void {
+    commit("toggleNightMode");
+  },
 };
 
 export default actions;
