@@ -59,4 +59,38 @@ describe("Given a RegisterForm component", () => {
       expect(onSubmit).toHaveBeenCalled();
     });
   });
+
+  describe("When it submit the form", () => {
+    test("Then function checkForm should be called", async () => {
+      const $store = {
+        state,
+        dispatch: jest.fn(),
+        commit: jest.fn(),
+      };
+      const methods = {
+        toggleRegister: jest.fn(),
+        checkForm: jest.fn(),
+        onSubmit: jest.fn(),
+      };
+      const mockRouter = {
+        push: jest.fn(),
+      };
+
+      const wrapper = mount(RegisterForm, {
+        global: {
+          mocks: {
+            $router: mockRouter,
+            $store,
+            methods,
+          },
+          plugins: [router],
+        },
+      });
+      const deleteForm = wrapper.get('[data-test="delete-from"]');
+      await deleteForm.trigger("click");
+      const checkForm = jest.fn();
+      checkForm();
+      expect(checkForm).toHaveBeenCalled();
+    });
+  });
 });
