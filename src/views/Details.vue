@@ -7,6 +7,7 @@
         <div class="icons-details-container">
           <img
             @click="onSubmit"
+            data-test="onSubmit"
             class="back-button"
             src="../../public/back-button-f92.png"
             alt="back button"
@@ -47,7 +48,11 @@
           />
         </div>
         <div class="button-container">
-          <button class="add-cart-button" @click="addToCart">
+          <button
+            class="add-cart-button"
+            @click="addToCart"
+            data-test="addToCart"
+          >
             Add to cart
           </button>
         </div>

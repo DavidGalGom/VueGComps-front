@@ -7,6 +7,7 @@
       height="40"
       width="40"
       @click="toggleNavBar"
+      data-test="toggle-burger"
     />
     <router-link class="home-link" to="/"
       ><img
