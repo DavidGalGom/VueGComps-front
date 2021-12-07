@@ -326,4 +326,14 @@ describe("Given a store mutations object", () => {
       expect(state.isLoading).toBe(false);
     });
   });
+
+  describe("When toggleNightMode receives a state", () => {
+    test("Then it should toggle nightMode value", () => {
+      const state = stateMock;
+      state.nightMode = true;
+      mutations.toggleNightMode(state);
+
+      expect(state.nightMode).toBe(false);
+    });
+  });
 });

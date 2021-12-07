@@ -150,4 +150,13 @@ describe("Given actions ", () => {
       expect(commit).toHaveBeenCalledWith("loggedUser", {});
     });
   });
+
+  describe("When the toggleNightModeAction is summoned", () => {
+    test("Then it should call commit with toggleNightMode", async () => {
+      await actions.toggleNightModeAction(configActionContext(commit));
+
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith("toggleNightMode");
+    });
+  });
 });
