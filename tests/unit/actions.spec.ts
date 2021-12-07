@@ -124,4 +124,17 @@ describe("Given actions ", () => {
       );
     });
   });
+
+  describe("When buyAllComponentsAction is summoned", () => {
+    test("Then it should call commit with buyAllComponents and data.components", async () => {
+      const data: User = mockedState.user;
+      mockedAxios.put.mockResolvedValue({ data });
+      JSON.parse = jest.fn().mockResolvedValue("12345");
+
+      await actions.buyAllComponentsAction(configActionContext(commit));
+
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith("buyAllComponents", data.components);
+    });
+  });
 });
