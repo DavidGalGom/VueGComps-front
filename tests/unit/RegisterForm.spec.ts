@@ -22,8 +22,75 @@ describe("Given a RegisterForm component", () => {
       });
 
       expect(wrapper.html()).toContain(
-        '<form id="register-form" class="register-form" autocomplete="off">'
+        '<form id="register-form" data-test="delete-from" class="register-form" autocomplete="off">'
       );
+    });
+  });
+  describe("When it submit the form", () => {
+    test("Then function onSubmit should be called", async () => {
+      const $store = {
+        state,
+        dispatch: jest.fn(),
+        commit: jest.fn(),
+      };
+      const methods = {
+        toggleRegister: jest.fn(),
+        checkForm: jest.fn(),
+        onSubmit: jest.fn(),
+      };
+      const mockRouter = {
+        push: jest.fn(),
+      };
+
+      const wrapper = mount(RegisterForm, {
+        global: {
+          mocks: {
+            $router: mockRouter,
+            $store,
+            methods,
+          },
+          plugins: [router],
+        },
+      });
+      const deleteForm = wrapper.get('[data-test="delete-from"]');
+      await deleteForm.trigger("click");
+      const onSubmit = jest.fn();
+      onSubmit();
+      expect(onSubmit).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it submit the form", () => {
+    test("Then function checkForm should be called", async () => {
+      const $store = {
+        state,
+        dispatch: jest.fn(),
+        commit: jest.fn(),
+      };
+      const methods = {
+        toggleRegister: jest.fn(),
+        checkForm: jest.fn(),
+        onSubmit: jest.fn(),
+      };
+      const mockRouter = {
+        push: jest.fn(),
+      };
+
+      const wrapper = mount(RegisterForm, {
+        global: {
+          mocks: {
+            $router: mockRouter,
+            $store,
+            methods,
+          },
+          plugins: [router],
+        },
+      });
+      const deleteForm = wrapper.get('[data-test="delete-from"]');
+      await deleteForm.trigger("click");
+      const checkForm = jest.fn();
+      checkForm();
+      expect(checkForm).toHaveBeenCalled();
     });
   });
 });

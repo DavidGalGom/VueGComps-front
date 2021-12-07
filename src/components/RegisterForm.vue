@@ -14,6 +14,7 @@
       <div class="hidden-container" :class="openRegister ? '' : 'hidden'">
         <form
           id="register-form"
+          data-test="delete-from"
           class="register-form"
           @submit.prevent="onSubmit"
           autocomplete="off"

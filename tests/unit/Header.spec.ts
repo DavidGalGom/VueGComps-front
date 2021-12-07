@@ -26,4 +26,36 @@ describe("Given a header component", () => {
       );
     });
   });
+
+  describe("When it click on the burger", () => {
+    test("Then function toggleNavBar should be called", async () => {
+      const $store = {
+        state,
+        dispatch: jest.fn(),
+        commit: jest.fn(),
+      };
+      const methods = {
+        toggleNavBar: jest.fn(),
+      };
+      const mockRouter = {
+        push: jest.fn(),
+      };
+
+      const wrapper = mount(Header, {
+        global: {
+          mocks: {
+            $router: mockRouter,
+            $store,
+            methods,
+          },
+          plugins: [router],
+        },
+      });
+      const burgerClick = wrapper.get('[data-test="toggle-burger"]');
+      await burgerClick.trigger("click");
+      const toggleNavBar = jest.fn();
+      toggleNavBar();
+      expect(toggleNavBar).toHaveBeenCalled();
+    });
+  });
 });

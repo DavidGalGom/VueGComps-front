@@ -64,10 +64,7 @@ export default defineComponent({
       };
       try {
         await this.loginUserAction(user);
-        this.userName = "";
-        this.password = "";
         this.$router.push("/");
-        window.scrollTo(0, 0);
       } catch {
         this.correctData = false;
       }
