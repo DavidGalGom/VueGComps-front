@@ -9,20 +9,22 @@ const actions = {
   async getProductsAction({
     commit,
   }: ActionContext<State, State>): Promise<void> {
+    commit("startLoading");
     const { data } = await axios.get(
       `${process.env.VUE_APP_API_URL}/components`
     );
-
+    commit("stopLoading");
     commit("getProducts", data);
   },
   async getProductByIdAction(
     { commit }: ActionContext<State, State>,
     id: string
   ): Promise<void> {
+    commit("startLoading");
     const { data } = await axios.get(
       `${process.env.VUE_APP_API_URL}/components/${id}`
     );
-
+    commit("stopLoading");
     commit("getProductById", data);
   },
 

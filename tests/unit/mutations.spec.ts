@@ -306,4 +306,24 @@ describe("Given a store mutations object", () => {
       expect(state.productsInCart).toEqual(payload);
     });
   });
+
+  describe("When startLoading receives a state", () => {
+    test("Then it should put isLoading to true", () => {
+      const state = stateMock;
+
+      mutations.startLoading(state);
+
+      expect(state.isLoading).toBe(true);
+    });
+  });
+
+  describe("When stopLoading receives a state", () => {
+    test("Then it should put isLoading to false", () => {
+      const state = stateMock;
+
+      mutations.stopLoading(state);
+
+      expect(state.isLoading).toBe(false);
+    });
+  });
 });

@@ -23,6 +23,7 @@ const state = {
   },
   isAuthenticated: false,
   productsInCart: [],
+  isLoading: false,
 };
 
 export default state;

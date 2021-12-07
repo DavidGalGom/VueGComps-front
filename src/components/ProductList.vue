@@ -1,5 +1,7 @@
 <template>
-  <div class="list-container">
+  <LoadingSpinner v-if="isLoading" />
+  <div class="loading-sniper-container" v-if="isLoading"></div>
+  <div class="list-container" v-if="!isLoading">
     <ul class="product-list" v-for="product in products" :key="product.id">
       <li class="product-id">
         <router-link class="details-link" :to="/details/ + product.id">
@@ -20,14 +22,16 @@
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import Product from "@/components/Product.vue";
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
 export default defineComponent({
   name: "ProductList",
   components: {
     Product,
+    LoadingSpinner,
   },
   computed: {
-    ...mapState(["products"]),
+    ...mapState(["products", "isLoading"]),
   },
   methods: {
     ...mapActions(["getProductsAction"]),
