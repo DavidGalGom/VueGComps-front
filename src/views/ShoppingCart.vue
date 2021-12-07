@@ -1,5 +1,6 @@
 <template>
-  <div class="shopping-cart">
+   <LoadingSpinner v-if="isLoading" />
+  <div class="shopping-cart" v-if="!isLoading">
     <h1 class="shopping-cart-title" :class="anyComponent ? 'hidden' : ''">
       This is your product list
     </h1>
@@ -40,11 +41,13 @@ import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import state from "../store/state";
 import CartCard from "@/components/CartCard.vue";
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
 export default defineComponent({
   name: "ShoppingCart",
   components: {
     CartCard,
+    LoadingSpinner,
   },
   data() {
     return {
@@ -52,7 +55,7 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapState(["productsInCart"]),
+    ...mapState(["productsInCart","isLoading"]),
   },
   methods: {
     ...mapActions(["getUserCompsByIdAction", "buyAllComponentsAction"]),

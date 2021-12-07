@@ -1,5 +1,6 @@
 <template>
-  <div class="details">
+  <LoadingSpinner v-if="isLoading" />
+  <div class="details" v-if="!isLoading">
     <h1 class="details-title">Details</h1>
     <div class="details-container">
       <div details-main-info-desktop>
@@ -73,12 +74,15 @@ import { defineComponent } from "vue";
 import { useRoute } from "vue-router";
 import { mapActions, mapState } from "vuex";
 import state from "../store/state";
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
 export default defineComponent({
   name: "Details",
-
+  components: {
+    LoadingSpinner,
+  },
   computed: {
-    ...mapState(["productById", "user"]),
+    ...mapState(["productById", "user", "isLoading"]),
   },
   methods: {
     ...mapActions([

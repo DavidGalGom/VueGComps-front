@@ -81,7 +81,6 @@ const actions = {
   }: ActionContext<State, State>): Promise<void> {
     const token = JSON.parse(localStorage.getItem("userToken") || "");
     const tokenId: User = jwtDecode(token);
-    commit("startLoading");
     const { data } = await axios.get(
       `${process.env.VUE_APP_API_URL}/users/${tokenId.id}`,
       {
@@ -90,7 +89,6 @@ const actions = {
         },
       }
     );
-    commit("stopLoading");
     commit("getUserCompsById", data.components);
   },
   async addProductToCartAction(
