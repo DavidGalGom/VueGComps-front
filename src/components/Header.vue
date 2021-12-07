@@ -16,6 +16,36 @@
         alt="VueGComps logo"
         height="70"
     /></router-link>
+    <img
+      class="light-logo"
+      :class="$store.state.nightMode ? '' : 'hidden'"
+      @click="toggleNightMode"
+      src="../../public/sun.png"
+      alt="Light"
+      height="50"
+    />
+    <img
+      class="night-logo"
+      :class="$store.state.nightMode ? 'hidden' : ''"
+      @click="toggleNightMode"
+      src="../../public/moon.png"
+      alt="Night"
+      height="50"
+    />
+    <h2
+      class="light-bar"
+      :class="$store.state.nightMode ? '' : 'hidden'"
+      @click="toggleNightMode"
+    >
+      Light Mode
+    </h2>
+    <h2
+      class="night-bar"
+      :class="$store.state.nightMode ? 'hidden' : ''"
+      @click="toggleNightMode"
+    >
+      Night Mode
+    </h2>
     <router-link class="about-link" to="/shopping-cart"
       ><img
         class="shopping-cart-logo"
@@ -81,15 +111,37 @@
         </h2></router-link
       >
     </div>
+    <div class="extended-night-mode">
+      <h2
+        class="extended-light-bar"
+        :class="$store.state.nightMode ? '' : 'hidden'"
+        @click="toggleNightMode"
+      >
+        Light Mode
+      </h2>
+
+      <h2
+        class="extended-night-bar"
+        :class="$store.state.nightMode ? 'hidden' : ''"
+        @click="toggleNightMode"
+      >
+        Night Mode
+      </h2>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions, mapState } from "vuex";
 
 export default defineComponent({
   name: "Header",
+  computed: {
+    ...mapState(["nightMode"]),
+  },
   methods: {
+    ...mapActions(["toggleNightModeAction"]),
     toggleNavBar() {
       if (this.toggleInvisible === "none") {
         this.toggleInvisible = "block";
@@ -98,6 +150,9 @@ export default defineComponent({
         this.toggleInvisible = "none";
         this.toggleBurger = true;
       }
+    },
+    toggleNightMode() {
+      this.toggleNightModeAction();
     },
   },
   data() {
@@ -122,19 +177,22 @@ export default defineComponent({
 }
 .extended-nav-bar {
   margin: 0 20px;
-  height: 120px;
+  height: 160px;
   width: 88vw;
   z-index: 1;
   margin-bottom: 20px;
 }
 .cart-bar,
 .login-bar,
-.logout-bar {
+.logout-bar,
+.night-bar,
+.light-bar {
   display: none;
 }
 .extended-home,
 .extended-cart,
-.extended-login {
+.extended-login,
+.extended-night-mode {
   background-color: $backgroundColor;
   height: 40px;
   padding: 0px;
@@ -146,7 +204,9 @@ export default defineComponent({
 }
 .extended-home-bar,
 .extended-cart-bar,
-.extended-login-bar {
+.extended-login-bar,
+.extended-night-bar,
+.extended-light-bar {
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -163,11 +223,17 @@ export default defineComponent({
 .vuegcomp-logo,
 .shopping-cart-logo,
 .login-logo,
-.logout-logo {
+.logout-logo,
+.light-logo,
+.night-logo {
   &:hover {
     cursor: pointer;
     transform: scale(1.1);
   }
+}
+.light-logo,
+.night-logo {
+  display: none;
 }
 a {
   text-decoration: none;
@@ -197,9 +263,6 @@ a {
     display: flex;
     align-items: center;
   }
-  .hidden {
-    display: none;
-  }
   .vuegcomp-logo {
     height: 100px;
   }
@@ -209,6 +272,22 @@ a {
   .home-link {
     position: absolute;
     left: 40px;
+  }
+  .light-logo,
+  .night-logo {
+    display: block;
+  }
+  .light-bar,
+  .night-bar {
+    display: block;
+    margin: 0 10px;
+    &:hover {
+      color: $mainColor;
+      cursor: pointer;
+    }
+  }
+  .hidden {
+    display: none;
   }
 }
 </style>
