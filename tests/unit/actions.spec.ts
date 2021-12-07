@@ -6,6 +6,7 @@ import { Product, User } from "@/types/interfaces";
 import mockedState from "../stateMock";
 
 jest.mock("axios");
+jest.mock("jwt-decode", () => () => ({}));
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 const commit = jest.fn() as jest.MockedFunction<Commit>;
@@ -58,7 +59,7 @@ describe("Given actions ", () => {
   });
 
   describe("When getUserCompsByIdAction is summoned", () => {
-    test.skip("Then it should call commit with getUserCompsById and data.components", async () => {
+    test("Then it should call commit with getUserCompsById and data.components", async () => {
       const data: User = mockedState.user;
       mockedAxios.get.mockResolvedValue({ data });
       JSON.parse = jest.fn().mockResolvedValue("12345");
@@ -71,7 +72,7 @@ describe("Given actions ", () => {
   });
 
   describe("When addProductToCartAction is summoned", () => {
-    test.skip("Then it should call commit with updateProductToCart and data.components", async () => {
+    test("Then it should call commit with updateProductToCart and data.components", async () => {
       const data: User = mockedState.user;
       mockedAxios.put.mockResolvedValue({ data });
       JSON.parse = jest.fn().mockResolvedValue("12345");
@@ -87,6 +88,23 @@ describe("Given actions ", () => {
         "updateProductToCart",
         data.components
       );
+    });
+  });
+
+  describe("When the loginUserAction is summoned", () => {
+    test("Then it should call commit with loginUser", async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { user }: any = mockedState.user;
+      const data = {
+        token: "12345",
+      };
+
+      mockedAxios.post.mockResolvedValue({ data });
+      JSON.parse = jest.fn().mockResolvedValue("12345");
+
+      await actions.loginUserAction(configActionContext(commit), user);
+      expect(commit).toHaveBeenCalled();
+      expect(commit).toHaveBeenCalledWith("loginUser", {});
     });
   });
 });
