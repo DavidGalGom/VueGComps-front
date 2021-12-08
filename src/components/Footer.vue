@@ -5,18 +5,24 @@
         <ul class="left-footer-list">
           <li class="about-us">
             <a
+              class="anchor"
+              :class="$store.state.nightMode ? '' : 'a-light'"
               href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
               >About us
             </a>
           </li>
           <li class="help">
             <a
+              class="anchor"
+              :class="$store.state.nightMode ? '' : 'a-light'"
               href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
               >Help</a
             >
           </li>
           <li class="others">
             <a
+              class="anchor"
+              :class="$store.state.nightMode ? '' : 'a-light'"
               href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
               >Others</a
             >
@@ -85,7 +91,7 @@
 .others {
   margin-bottom: 15px;
 }
-a {
+.anchor {
   text-decoration: none;
   color: $textColor;
   &:hover {
@@ -123,6 +129,9 @@ a {
 .youtube-list-item {
   &:hover {
     transform: scale(1.1);
+  }
+  .a-light {
+    color: $lightTextColor;
   }
 }
 @media (min-width: 1000px) {

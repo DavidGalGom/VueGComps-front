@@ -21,7 +21,7 @@ describe("Given the App", () => {
         stubs: ["router-view"],
       });
 
-      expect(wrapper.html()).toContain('<div class="all-app">');
+      expect(wrapper.html()).toContain('<div class="all-app light-mode">');
     });
   });
 });
