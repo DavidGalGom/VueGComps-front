@@ -93,4 +93,38 @@ describe("Given a RegisterForm component", () => {
       expect(checkForm).toHaveBeenCalled();
     });
   });
+
+  describe("When it clicks the user image", () => {
+    test("Then function toggleRegister should be called", async () => {
+      const $store = {
+        state,
+        dispatch: jest.fn(),
+        commit: jest.fn(),
+      };
+      const methods = {
+        toggleRegister: jest.fn(),
+        checkForm: jest.fn(),
+        onSubmit: jest.fn(),
+      };
+      const mockRouter = {
+        push: jest.fn(),
+      };
+
+      const wrapper = mount(RegisterForm, {
+        global: {
+          mocks: {
+            $router: mockRouter,
+            $store,
+            methods,
+          },
+          plugins: [router],
+        },
+      });
+      const toggleFormImage = wrapper.get('[data-test="toggle-from"]');
+      await toggleFormImage.trigger("click");
+      const toggleForm = jest.fn();
+      toggleForm();
+      expect(toggleForm).toHaveBeenCalled();
+    });
+  });
 });

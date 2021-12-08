@@ -9,6 +9,7 @@
           <h2 class="register-title">Register:</h2>
           <img
             class="register-toggler"
+            data-test="toggle-from"
             :src="openRegister ? 'Selected-burger-menu.png' : 'account-f92.png'"
             alt="open/close from icon"
             height="40"
