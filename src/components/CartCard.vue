@@ -1,6 +1,9 @@
 <template>
   <div class="cart-card-container">
-    <div class="card-container">
+    <div
+      class="card-container"
+      :class="$store.state.nightMode ? '' : 'card-light'"
+    >
       <div class="image-container">
         <img :src="mainImage" alt="component" class="mainImage-component" />
       </div>
@@ -12,11 +15,22 @@
           height="40"
           @click="deleteToCart"
         />
-        <h3 class="component-name">{{ name }}</h3>
+        <h3
+          class="component-name"
+          :class="$store.state.nightMode ? '' : 'name-light'"
+        >
+          {{ name }}
+        </h3>
         <p class="component-price">{{ price }} €</p>
       </div>
     </div>
-    <button class="cart-buy-button" @click="buyToCart">Proceed to BUY</button>
+    <button
+      class="cart-buy-button"
+      :class="$store.state.nightMode ? '' : 'button-light'"
+      @click="buyToCart"
+    >
+      Proceed to BUY
+    </button>
   </div>
 </template>
 
@@ -65,6 +79,10 @@ export default defineComponent({
     border: solid $mainColor 2px;
   }
 }
+.card-light {
+  background-color: $lightAlterColor;
+  border: solid $lightTextColor 2px;
+}
 .info-container {
   display: flex;
   flex-direction: column;
@@ -92,6 +110,9 @@ export default defineComponent({
   font-size: 14px;
   margin: 0;
 }
+.name-light {
+  color: $lightTextColor;
+}
 .component-price {
   color: $mainColor;
   font-size: 20px;
@@ -109,6 +130,15 @@ export default defineComponent({
     cursor: pointer;
     color: $mainColor;
     background-color: $alterColor;
+  }
+}
+.button-light {
+  color: $lightTextColor;
+  border: solid $lightTextColor 2px;
+  &:hover {
+    border: solid $mainColor 2px;
+    color: $mainColor;
+    background-color: $lightAlterColor;
   }
 }
 @media (min-width: 1000px) {

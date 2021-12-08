@@ -1,10 +1,18 @@
 <template>
-  <div class="card-container">
+  <div
+    class="card-container"
+    :class="$store.state.nightMode ? '' : 'container-light'"
+  >
     <div class="image-container">
       <img :src="mainImage" alt="component" class="mainImage-component" />
     </div>
     <div class="info-container">
-      <h3 class="component-name">{{ name }}</h3>
+      <h3
+        class="component-name"
+        :class="$store.state.nightMode ? '' : 'name-light'"
+      >
+        {{ name }}
+      </h3>
       <p class="component-price">{{ price }} €</p>
     </div>
   </div>
@@ -63,6 +71,13 @@ export default defineComponent({
 .component-price {
   color: $mainColor;
   font-size: 20px;
+}
+.name-light {
+  color: $lightTextColor;
+}
+.container-light {
+  border: solid $lightTextColor 2px;
+  background-color: $lightAlterColor;
 }
 @media (min-width: 1000px) {
   .card-container {

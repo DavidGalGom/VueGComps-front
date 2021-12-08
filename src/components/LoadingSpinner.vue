@@ -42,7 +42,7 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background: #fff;
+  background: #f92;
   border-radius: 50%;
   animation: lds-default 1.2s linear infinite;
 }

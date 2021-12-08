@@ -2,8 +2,11 @@
   <LoadingSpinner v-if="isLoading" />
   <div class="details" v-if="!isLoading">
     <h1 class="details-title">Details</h1>
-    <div class="details-container">
-      <div details-main-info-desktop>
+    <div
+      class="details-container"
+      :class="$store.state.nightMode ? '' : 'container-light'"
+    >
+      <div class="details-main-info-desktop">
         <div class="icons-details-container">
           <img
             @click="onSubmit"
@@ -50,6 +53,7 @@
         <div class="button-container">
           <button
             class="add-cart-button"
+            :class="$store.state.nightMode ? '' : 'button-light'"
             @click="addToCart"
             data-test="addToCart"
           >
@@ -134,6 +138,7 @@ export default defineComponent({
   background-color: $alterColor;
   border-radius: 25px;
 }
+
 .icons-details-container {
   display: flex;
   justify-content: space-between;
@@ -202,6 +207,12 @@ export default defineComponent({
     border: solid 2px $mainColor;
   }
 }
+.button-light {
+  color: $lightTextColor;
+  &:hover {
+    background-color: $lightAlterColor;
+  }
+}
 .button-container {
   display: flex;
   justify-content: center;
@@ -221,6 +232,9 @@ export default defineComponent({
 }
 .back-button-desktop {
   display: none;
+}
+.container-light {
+  background-color: $lightAlterColor;
 }
 @media (min-width: 700px) {
   .details-container {
@@ -271,6 +285,9 @@ export default defineComponent({
     font-size: 18px;
     margin-left: 20px;
   }
+  .container-light {
+    background-color: $lightAlterColor;
+  }
 }
 @media (min-width: 1000px) {
   .details-container {
@@ -279,6 +296,9 @@ export default defineComponent({
     flex-direction: row;
     min-height: 67vh;
     width: 95%;
+  }
+  .container-light {
+    background-color: $lightAlterColor;
   }
   .back-button {
     display: none;

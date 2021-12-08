@@ -1,86 +1,96 @@
 <template>
   <div class="register">
-    <div class="register-container" :class="correctData ? '' : 'shake-form'">
-      <div class="register-header">
-        <h2 class="register-title">Register:</h2>
-        <img
-          class="register-toggler"
-          :src="openRegister ? 'Selected-burger-menu.png' : 'account-f92.png'"
-          alt="open/close from icon"
-          height="40"
-          @click="toggleRegister"
-        />
-      </div>
-      <div class="hidden-container" :class="openRegister ? '' : 'hidden'">
-        <form
-          id="register-form"
-          data-test="delete-from"
-          class="register-form"
-          @submit.prevent="onSubmit"
-          autocomplete="off"
-          @change="checkForm"
-        >
-          <label for="userName"></label>
-          <input
-            class="username-input"
-            id="userName"
-            v-model="userName"
-            type="text"
-            placeholder="Enter your user name"
+    <div
+      class="register-container"
+      :class="$store.state.nightMode ? '' : 'register-light'"
+    >
+      <div :class="correctData ? '' : 'shake-form'">
+        <div class="register-header">
+          <h2 class="register-title">Register:</h2>
+          <img
+            class="register-toggler"
+            :src="openRegister ? 'Selected-burger-menu.png' : 'account-f92.png'"
+            alt="open/close from icon"
+            height="40"
+            @click="toggleRegister"
           />
-          <label for="name"></label>
-          <input
-            class="name-input"
-            id="name"
-            v-model="name"
-            type="text"
-            placeholder="Enter your name"
-          />
-          <label for="email"></label>
-          <input
-            class="email-input"
-            id="email"
-            v-model="email"
-            type="email"
-            placeholder="Enter your email"
-          />
-          <label for="password"></label>
-          <input
-            id="password"
-            v-model="password"
-            placeholder="Enter your password"
-            type="password"
-          />
-          <label for="password"></label>
-          <input
-            id="password2"
-            v-model="password2"
-            placeholder="Repeat your password"
-            type="password"
-          />
-          <label for="age">Age:You must have 18+</label>
-          <input
-            class="age-input"
-            id="age"
-            v-model="age"
-            type="number"
-            placeholder="Enter your age"
-            min="18"
-            max="120"
-          />
-          <h3 class="wrong-data-register" :class="correctData ? 'hidden' : ''">
-            Please introduce a correct data
-          </h3>
-          <button
-            class="register-button"
-            type="submit"
-            value="Register"
-            :disabled="isDisabled"
-            :class="isDisabled ? 'disabled' : ''"
-          >
-            Register
-          </button>
-        </form>
+        </div>
+        <div class="hidden-container" :class="openRegister ? '' : 'hidden'">
+          <div :class="$store.state.nightMode ? '' : 'register-light'">
+            <form
+              id="register-form"
+              data-test="delete-from"
+              class="register-form"
+              @submit.prevent="onSubmit"
+              autocomplete="off"
+              @change="checkForm"
+            >
+              <label for="userName"></label>
+              <input
+                class="username-input"
+                id="userName"
+                v-model="userName"
+                type="text"
+                placeholder="Enter your user name"
+              />
+              <label for="name"></label>
+              <input
+                class="name-input"
+                id="name"
+                v-model="name"
+                type="text"
+                placeholder="Enter your name"
+              />
+              <label for="email"></label>
+              <input
+                class="email-input"
+                id="email"
+                v-model="email"
+                type="email"
+                placeholder="Enter your email"
+              />
+              <label for="password"></label>
+              <input
+                id="password"
+                v-model="password"
+                placeholder="Enter your password"
+                type="password"
+              />
+              <label for="password"></label>
+              <input
+                id="password2"
+                v-model="password2"
+                placeholder="Repeat your password"
+                type="password"
+              />
+              <label for="age">Age:You must have 18+</label>
+              <input
+                class="age-input"
+                id="age"
+                v-model="age"
+                type="number"
+                placeholder="Enter your age"
+                min="18"
+                max="120"
+              />
+              <h3
+                class="wrong-data-register"
+                :class="correctData ? 'hidden' : ''"
+              >
+                Please introduce a correct data
+              </h3>
+              <button
+                class="register-button"
+                type="submit"
+                value="Register"
+                :disabled="isDisabled"
+                :class="isDisabled ? 'disabled' : ''"
+              >
+                Register
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -163,6 +173,11 @@ export default defineComponent({
   background-color: $alterColor;
   border-radius: 25px;
 }
+.register-light {
+  background-color: $lightAlterColor;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
 .hidden-container {
   width: 300px;
   min-height: 320px;
@@ -244,7 +259,7 @@ input {
 
 .shake-form {
   animation: shake 0.5s;
-  border: solid $mainColor 3px;
+  border-radius: 25px;
 }
 
 @keyframes shake {

@@ -2,6 +2,7 @@
   <div class="logout-container">
     <button
       class="logout-button"
+      :class="$store.state.nightMode ? '' : 'button-light'"
       type="submit"
       value="Logout"
       @click="onSubmit"
@@ -66,6 +67,11 @@ export default defineComponent({
     cursor: pointer;
     height: 50px;
     width: 120px;
+  }
+}
+.button-light {
+  &:hover {
+    background-color: $lightAlterColor;
   }
 }
 @media (min-width: 700px) {
