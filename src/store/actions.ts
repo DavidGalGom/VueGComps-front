@@ -16,6 +16,7 @@ const actions = {
     commit("stopLoading");
     commit("getProducts", data);
   },
+
   async getProductByIdAction(
     { commit }: ActionContext<State, State>,
     id: string
@@ -76,6 +77,7 @@ const actions = {
       return "Error";
     }
   },
+
   async getUserCompsByIdAction({
     commit,
   }: ActionContext<State, State>): Promise<void> {
@@ -91,6 +93,7 @@ const actions = {
     );
     commit("getUserCompsById", data.components);
   },
+
   async addProductToCartAction(
     { commit }: ActionContext<State, State>,
     components: Array<string>
@@ -139,6 +142,7 @@ const actions = {
     );
     commit("updateProductToCart", data.components);
   },
+
   async buyAllComponentsAction({
     commit,
   }: ActionContext<State, State>): Promise<void> {
@@ -156,6 +160,10 @@ const actions = {
       authorization
     );
     commit("buyAllComponents", data.components);
+  },
+
+  toggleNightModeAction({ commit }: ActionContext<State, State>): void {
+    commit("toggleNightMode");
   },
 };
 

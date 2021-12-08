@@ -39,7 +39,6 @@ export default defineComponent({
 <style scoped lang="scss">
 @import "./src/styles/variables";
 .login-title {
-  color: $textColor;
   text-align: center;
   font-size: 20px;
 }

@@ -1,5 +1,5 @@
 <template>
-   <LoadingSpinner v-if="isLoading" />
+  <LoadingSpinner v-if="isLoading" />
   <div class="shopping-cart" v-if="!isLoading">
     <h1 class="shopping-cart-title" :class="anyComponent ? 'hidden' : ''">
       This is your product list
@@ -55,7 +55,7 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapState(["productsInCart","isLoading"]),
+    ...mapState(["productsInCart", "isLoading"]),
   },
   methods: {
     ...mapActions(["getUserCompsByIdAction", "buyAllComponentsAction"]),
@@ -87,7 +87,6 @@ export default defineComponent({
   min-height: 63vh;
 }
 .shopping-cart-title {
-  color: $textColor;
   text-align: center;
   font-size: 22px;
 }

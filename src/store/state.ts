@@ -24,6 +24,7 @@ const state = {
   isAuthenticated: false,
   productsInCart: [],
   isLoading: false,
+  nightMode: true,
 };
 
 export default state;

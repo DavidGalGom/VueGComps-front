@@ -41,6 +41,9 @@ const mutations = {
   stopLoading(state: State): void {
     state.isLoading = false;
   },
+  toggleNightMode(state: State): void {
+    state.nightMode = !state.nightMode;
+  },
 };
 
 export default mutations;

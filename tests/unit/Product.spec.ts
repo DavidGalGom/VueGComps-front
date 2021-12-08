@@ -21,7 +21,9 @@ describe("Given a Product component", () => {
         stubs: ["router-view"],
       });
 
-      expect(wrapper.html()).toContain('<div class="card-container">');
+      expect(wrapper.html()).toContain(
+        '<div class="card-container container-light">'
+      );
     });
   });
 });

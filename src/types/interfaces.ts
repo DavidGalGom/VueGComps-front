@@ -28,6 +28,7 @@ interface State {
   isAuthenticated: boolean;
   productsInCart: Array<Product>;
   isLoading: boolean;
+  nightMode: boolean;
 }
 
 export { State, User, Product };

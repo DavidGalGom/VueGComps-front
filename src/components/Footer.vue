@@ -5,18 +5,24 @@
         <ul class="left-footer-list">
           <li class="about-us">
             <a
+              class="anchor"
+              :class="$store.state.nightMode ? '' : 'a-light'"
               href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
               >About us
             </a>
           </li>
           <li class="help">
             <a
+              class="anchor"
+              :class="$store.state.nightMode ? '' : 'a-light'"
               href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
               >Help</a
             >
           </li>
           <li class="others">
             <a
+              class="anchor"
+              :class="$store.state.nightMode ? '' : 'a-light'"
               href="https://github.com/SkylabCoders/David-Galvez_Front-Final-Project-202109"
               >Others</a
             >
@@ -85,7 +91,7 @@
 .others {
   margin-bottom: 15px;
 }
-a {
+.anchor {
   text-decoration: none;
   color: $textColor;
   &:hover {
@@ -112,10 +118,10 @@ a {
   padding: 10px;
 }
 .footer-copyright {
-  margin: 15px 30px;
+  margin: 15px 30px 0 30px;
   border-top: solid $mainColor 2px;
   text-align: center;
-  padding-top: 10px;
+  padding: 10px 0;
   font-size: 16px;
 }
 .instagram-list-item,
@@ -124,6 +130,9 @@ a {
   &:hover {
     transform: scale(1.1);
   }
+}
+.a-light {
+  color: $lightTextColor;
 }
 @media (min-width: 1000px) {
   .left-footer-list {

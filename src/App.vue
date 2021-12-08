@@ -1,5 +1,8 @@
 <template>
-  <div class="all-app">
+  <div
+    class="all-app"
+    :class="$store.state.nightMode ? 'night-mode' : 'light-mode'"
+  >
     <Header />
     <div class="router-container">
       <router-view />
@@ -45,6 +48,18 @@ body {
 }
 #nav {
   padding: 30px;
+  color: $textColor;
+}
+.all-app {
+  margin: 0;
+  padding: 0;
+}
+.light-mode {
+  background-color: $lightBackgroundColor;
+  color: $lightTextColor;
+}
+.night-mode {
+  background-color: $backgroundColor;
   color: $textColor;
 }
 </style>

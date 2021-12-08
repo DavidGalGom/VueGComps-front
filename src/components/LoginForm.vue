@@ -1,41 +1,46 @@
 <template>
   <div class="login">
-    <div class="login-container" :class="correctData ? '' : 'shake-form'">
-      <h2 class="login-title">Login:</h2>
-      <form
-        class="login-form"
-        @submit.prevent="onSubmit"
-        autocomplete="off"
-        id="login-form"
-      >
-        <label for="userName"></label>
-        <input
-          class="username-input"
-          id="userName-login"
-          v-model="userName"
-          type="text"
-          placeholder="Enter your user name"
-        />
-
-        <input
-          id="password-login"
-          v-model="password"
-          placeholder="Enter your password"
-          type="password"
-        />
-        <label for="password"></label>
-        <h3 class="wrong-data-login" :class="correctData ? 'hidden' : ''">
-          Please introduce a correct data
-        </h3>
-        <button
-          class="login-button"
-          type="submit"
-          value="Login"
-          :class="userName === '' || password === '' ? 'disabled' : ''"
+    <div
+      class="login-container"
+      :class="$store.state.nightMode ? '' : 'login-light'"
+    >
+      <div :class="correctData ? '' : 'shake-form'">
+        <h2 class="login-title">Login:</h2>
+        <form
+          class="login-form"
+          @submit.prevent="onSubmit"
+          autocomplete="off"
+          id="login-form"
         >
-          Login
-        </button>
-      </form>
+          <label for="userName"></label>
+          <input
+            class="username-input"
+            id="userName-login"
+            v-model="userName"
+            type="text"
+            placeholder="Enter your user name"
+          />
+
+          <input
+            id="password-login"
+            v-model="password"
+            placeholder="Enter your password"
+            type="password"
+          />
+          <label for="password"></label>
+          <h3 class="wrong-data-login" :class="correctData ? 'hidden' : ''">
+            Please introduce a correct data
+          </h3>
+          <button
+            class="login-button"
+            type="submit"
+            value="Login"
+            :class="userName === '' || password === '' ? 'disabled' : ''"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -87,6 +92,9 @@ export default defineComponent({
   min-height: 250px;
   background-color: $alterColor;
   border-radius: 25px;
+}
+.login-light {
+  background-color: $lightAlterColor;
 }
 .login-title {
   margin-top: 20px;
@@ -156,6 +164,7 @@ input {
 .shake-form {
   animation: shake 0.5s;
   border: solid $mainColor 3px;
+  border-radius: 25px;
 }
 
 @keyframes shake {
