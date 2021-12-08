@@ -22,7 +22,7 @@ describe("Given a header component", () => {
       });
 
       expect(wrapper.html()).toContain(
-        '<img class="vuegcomp-logo" alt="VueGComps logo" height="70">'
+        '<img class="night-logo" alt="Night" height="50">'
       );
     });
   });

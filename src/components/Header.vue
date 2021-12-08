@@ -9,13 +9,25 @@
       @click="toggleNavBar"
       data-test="toggle-burger"
     />
-    <router-link class="home-link" to="/"
+    <router-link
+      class="home-link"
+      :class="$store.state.nightMode ? '' : 'a-light'"
+      to="/"
       ><img
+        v-if="$store.state.nightMode"
         class="vuegcomp-logo"
         src="../../public/Logo-horizontal-PhotoRoom.png"
         alt="VueGComps logo"
         height="70"
-    /></router-link>
+      />
+      <img
+        v-if="!$store.state.nightMode"
+        class="vuegcomp-logo-light"
+        src="../../public/logo-white-mode.png"
+        alt="VueGComps logo"
+        height="65"
+      />
+    </router-link>
     <img
       class="light-logo"
       :class="$store.state.nightMode ? '' : 'hidden'"
@@ -46,7 +58,10 @@
     >
       Night Mode
     </h2>
-    <router-link class="about-link" to="/shopping-cart"
+    <router-link
+      class="about-link"
+      :class="$store.state.nightMode ? '' : 'a-light'"
+      to="/shopping-cart"
       ><img
         class="shopping-cart-logo"
         src="../../public/shopping-cart-f92.png"
@@ -55,7 +70,10 @@
       />
       <h2 class="cart-bar">Shopping Cart</h2>
     </router-link>
-    <router-link class="login-link" to="/login"
+    <router-link
+      class="login-link"
+      :class="$store.state.nightMode ? '' : 'a-light'"
+      to="/login"
       ><img
         class="login-logo"
         :class="$store.state.isAuthenticated ? 'hidden' : ''"
@@ -86,17 +104,29 @@
   </div>
   <div class="extended-nav-bar" :style="{ display: toggleInvisible }">
     <div class="extended-home">
-      <router-link class="about-link" to="/">
+      <router-link
+        class="about-link"
+        :class="$store.state.nightMode ? '' : 'a-light'"
+        to="/"
+      >
         <h2 class="extended-home-bar">Home</h2></router-link
       >
     </div>
     <div class="extended-cart">
-      <router-link class="about-link" to="/shopping-cart">
+      <router-link
+        class="about-link"
+        :class="$store.state.nightMode ? '' : 'a-light'"
+        to="/shopping-cart"
+      >
         <h2 class="extended-cart-bar">Shopping Cart</h2></router-link
       >
     </div>
     <div class="extended-login">
-      <router-link class="about-link" to="/login">
+      <router-link
+        class="about-link"
+        :class="$store.state.nightMode ? '' : 'a-light'"
+        to="/login"
+      >
         <h2
           class="extended-login-bar"
           :class="$store.state.isAuthenticated ? 'hidden' : ''"
@@ -193,7 +223,6 @@ export default defineComponent({
 .extended-cart,
 .extended-login,
 .extended-night-mode {
-  background-color: $backgroundColor;
   height: 40px;
   padding: 0px;
   margin: 0px;
@@ -210,7 +239,6 @@ export default defineComponent({
   display: flex;
   align-items: center;
   font-size: 18px;
-  background-color: $backgroundColor;
   height: 40px;
   padding: 0px;
   margin: 0px;
@@ -221,6 +249,7 @@ export default defineComponent({
 }
 .burger-menu-logo,
 .vuegcomp-logo,
+.vuegcomp-logo-light,
 .shopping-cart-logo,
 .login-logo,
 .logout-logo,
@@ -235,9 +264,14 @@ export default defineComponent({
 .night-logo {
   display: none;
 }
-a {
+.about-link,
+.login-link,
+.home-link {
   text-decoration: none;
   color: $textColor;
+}
+.a-light {
+  color: $lightTextColor;
 }
 .hidden {
   display: none;
@@ -265,6 +299,9 @@ a {
   }
   .vuegcomp-logo {
     height: 100px;
+  }
+  .vuegcomp-logo-light {
+    height: 85px;
   }
   .header-nav-bar {
     justify-content: flex-end;

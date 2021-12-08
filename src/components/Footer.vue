@@ -118,10 +118,10 @@
   padding: 10px;
 }
 .footer-copyright {
-  margin: 15px 30px;
+  margin: 15px 30px 0 30px;
   border-top: solid $mainColor 2px;
   text-align: center;
-  padding-top: 10px;
+  padding: 10px 0;
   font-size: 16px;
 }
 .instagram-list-item,
@@ -130,9 +130,9 @@
   &:hover {
     transform: scale(1.1);
   }
-  .a-light {
-    color: $lightTextColor;
-  }
+}
+.a-light {
+  color: $lightTextColor;
 }
 @media (min-width: 1000px) {
   .left-footer-list {

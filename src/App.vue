@@ -50,6 +50,10 @@ body {
   padding: 30px;
   color: $textColor;
 }
+.all-app {
+  margin: 0;
+  padding: 0;
+}
 .light-mode {
   background-color: $lightBackgroundColor;
   color: $lightTextColor;
